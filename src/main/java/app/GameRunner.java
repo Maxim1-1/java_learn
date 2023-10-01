@@ -8,6 +8,9 @@ import java.util.ArrayList;
 public class GameRunner {
 
     public static void main(String[] args) {
+
+        int iter=1;
+
         Reader readerConsole = new Reader();
         Writer writerConsole = new Writer();
         GameLogic gameLogic = new GameLogic();
@@ -21,12 +24,16 @@ public class GameRunner {
         } else {
             writerConsole.outputValueConsole("игра завершена");
         }
+        System.out.printf("Раунд %s%n", iter);
+        gameLogic.chooseElements(players);
+        winner = gameLogic.determineWinner(players);
 
         for (int round = 0; winner.size()!=1; round++) {
-            System.out.printf("Раунд %s%n", round +1);
-            gameLogic.chooseElements(players);
-            winner = gameLogic.determineWinner(players);
+            System.out.printf("Раунд %s%n", iter+1);
+            gameLogic.chooseElements(winner);
+            winner = gameLogic.determineWinner(winner);
         }
+        writerConsole.outputValueConsole(winner.get(0).namePlayer + "победил");
 
     }
 }

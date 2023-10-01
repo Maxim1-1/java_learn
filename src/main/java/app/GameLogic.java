@@ -110,6 +110,11 @@ public class GameLogic {
             return winElement = secondElement;
         }
     }
+
+    private void removePlayer(ArrayList<Player> players, Player player) {
+        players.remove(player);
+    }
+
 }
 
 
