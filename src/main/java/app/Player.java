@@ -1,6 +1,5 @@
 package app;
 
-import java.util.List;
 
 public class Player {
 
@@ -17,9 +16,6 @@ public class Player {
 
     Player (String namePlayer) {
         this.namePlayer = namePlayer;
-    }
-    Player () {
-        this.namePlayer = ""; //рандомно генерируется
     }
 
     public String getNamePlayer() {

@@ -9,31 +9,34 @@ public class GameRunner {
 
     public static void main(String[] args) {
 
-        int iter=1;
+        int counterRound =1;
 
         Reader readerConsole = new Reader();
         Writer writerConsole = new Writer();
         GameLogic gameLogic = new GameLogic();
+        Winner winnerPair = new Winner();
         ArrayList<Player> players = new ArrayList<>();
-        ArrayList<Player> winner = new ArrayList<>();
+        ArrayList<Player> winnerTheGame;
 
         gameLogic.start();
+
         if (readerConsole.getValueFromConsole().equals("start")) {
             players = gameLogic.inputAndCreatePlayers();
 
         } else {
             writerConsole.outputValueConsole("игра завершена");
         }
-        System.out.printf("Раунд %s%n", iter);
-        gameLogic.chooseElements(players);
-        winner = gameLogic.determineWinner(players);
 
-        for (int round = 0; winner.size()!=1; round++) {
-            System.out.printf("Раунд %s%n", iter+1);
-            gameLogic.chooseElements(winner);
-            winner = gameLogic.determineWinner(winner);
+        System.out.printf("Раунд %s%n", counterRound);
+        gameLogic.chooseElements(players);
+        winnerTheGame = winnerPair.determineWinner(players);
+
+        for (int round = 0; winnerTheGame.size()!=1; round++) {
+            System.out.printf("Раунд %s%n", counterRound +1);
+            gameLogic.chooseElements(winnerTheGame);
+            winnerTheGame = winnerPair.determineWinner(winnerTheGame);
         }
-        writerConsole.outputValueConsole(winner.get(0).namePlayer + "победил");
+        writerConsole.outputValueConsole(String.format("%s победил", winnerTheGame.get(0).namePlayer));
 
     }
 }
