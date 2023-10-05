@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class PlayerFactory {
 
     public ArrayList<Player> createPlayers (int countPlayers) {
-        ArrayList<Player> list = new ArrayList<>();
+        ArrayList<Player> listPlayers = new ArrayList<>();
 
         for (int i=0;i<countPlayers;i++) {
-            list.add(new Player());
+            listPlayers.add(new Player());
         }
-        return list;
+        return listPlayers;
     }
 }

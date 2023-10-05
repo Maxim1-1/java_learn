@@ -16,7 +16,7 @@ public class GameRunner {
         GameLogic gameLogic = new GameLogic();
         Winner winnerPair = new Winner();
         ArrayList<Player> players = new ArrayList<>();
-        ArrayList<Player> winnerTheGame;
+        ArrayList<Player> winnerTheRound;
 
         gameLogic.start();
 
@@ -29,14 +29,14 @@ public class GameRunner {
 
         System.out.printf("Раунд %s%n", counterRound);
         gameLogic.chooseElements(players);
-        winnerTheGame = winnerPair.determineWinner(players);
+        winnerTheRound = winnerPair.determineWinner(players);
 
-        for (int round = 0; winnerTheGame.size()!=1; round++) {
+        for (int round = 0; winnerTheRound.size()!=1; round++) {
             System.out.printf("Раунд %s%n", counterRound +1);
-            gameLogic.chooseElements(winnerTheGame);
-            winnerTheGame = winnerPair.determineWinner(winnerTheGame);
+            gameLogic.chooseElements(winnerTheRound);
+            winnerTheRound = winnerPair.determineWinner(winnerTheRound);
         }
-        writerConsole.outputValueConsole(String.format("%s победил", winnerTheGame.get(0).namePlayer));
+        writerConsole.outputValueConsole(String.format("%s победил", winnerTheRound.get(0).namePlayer));
 
     }
 }

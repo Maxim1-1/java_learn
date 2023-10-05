@@ -2,7 +2,6 @@ package app;
 
 
 public class Player {
-
     String namePlayer;
     String playerElement;
 
@@ -14,8 +13,11 @@ public class Player {
         this.playerElement = playerElement;
     }
 
-    Player (String namePlayer) {
+    Player(String namePlayer) {
         this.namePlayer = namePlayer;
+    }
+
+    Player() {
     }
 
     public String getNamePlayer() {
