@@ -1,6 +1,6 @@
 // Еще один пример рекурсии
 // В данном примере рекурсивный метод printArray() выводит первые i элементов из массива values.
-package Chapter07;
+package com.Maxim.chapter07;
 
 class RecTest{
     int[] values;

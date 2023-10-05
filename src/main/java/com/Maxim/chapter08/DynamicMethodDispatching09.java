@@ -1,4 +1,4 @@
-package Chapter08;
+package com.Maxim.chapter08;
 // Динамическая диспетчеризация методов (стр. 239 - 240)
 class A08 {
     void callme() {

@@ -1,4 +1,4 @@
-package Chapter05;
+package com.Maxim.chapter05;
 // Простой пример применения оператора switch
 public class SampleSwitch {
     public static void main(String[] args) {

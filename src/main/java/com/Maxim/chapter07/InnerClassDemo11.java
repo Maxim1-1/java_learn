@@ -1,5 +1,5 @@
 
-package Chapter07;
+package com.Maxim.chapter07;
 // Продемонстрировать применение внутреннего класса
 class Outer {
     int outer_x = 100;

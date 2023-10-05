@@ -1,5 +1,5 @@
 
-package Chapter07;
+package com.Maxim.chapter07;
 // Простой пример рекурсии (вычисление Факториала)
 class Factorial {
     // это рекурсивный метод

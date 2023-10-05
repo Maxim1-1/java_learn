@@ -1,4 +1,4 @@
-package Chapter05;
+package com.Maxim.chapter05;
 //Пример цикла for в стиле for each
 public class ForEach {
     public static void main(String[] args) {

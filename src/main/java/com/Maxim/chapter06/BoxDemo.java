@@ -1,4 +1,4 @@
-package Chapter06;
+package com.Maxim.chapter06;
 // Программа, использующая класс Box
 class Box {
     double width;

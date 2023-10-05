@@ -1,4 +1,4 @@
-package Chapter07;
+package com.Maxim.chapter07;
 // Определить внутренний класс в цикле for
 class Outer13 {
     int outer_x = 100;

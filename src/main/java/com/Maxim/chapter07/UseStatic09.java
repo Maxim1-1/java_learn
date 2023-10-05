@@ -1,5 +1,5 @@
 // Продемонстрировать статические переменные, методы и блоки кода.
-package Chapter07;
+package com.Maxim.chapter07;
 
 public class UseStatic09 {
     static int a = 3;

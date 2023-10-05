@@ -1,5 +1,5 @@
 // Продемонстрировать некоторые методы из класса String
-        package Chapter07;
+        package com.Maxim.chapter07;
 
 public class StringDemo14 {
     public static void main(String[] args) {

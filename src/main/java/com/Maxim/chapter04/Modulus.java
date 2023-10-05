@@ -1,4 +1,4 @@
-package Chapter04;
+package ;
 // Операция деления по модулю% возвращает остаток от деления
 public class Modulus {
     public static void main(String[] args) {

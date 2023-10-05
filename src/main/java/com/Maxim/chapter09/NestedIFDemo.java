@@ -1,4 +1,4 @@
-package Chapter09.NestedInterfaces;
+package com.Maxim.chapter09;
 // Пример вложенного интерфейса
 
 // Класс А содержит интерфейс как свой член

@@ -1,4 +1,4 @@
-package Chapter04;
+package com.Maxim.chapter04;
 // Составные операции с присваиванием
 public class OpEquals {
     public static void main(String[] args) {

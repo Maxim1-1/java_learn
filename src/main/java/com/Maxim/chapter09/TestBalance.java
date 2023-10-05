@@ -1,6 +1,6 @@
-package Chapter09.mypack02;
+package com.Maxim.chapter09;
 
-import  Chapter09.mypack.*;
+
 
 class TestBalance {
     public static void main(String[] args) {

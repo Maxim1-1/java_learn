@@ -1,5 +1,5 @@
 
-package Chapter05;
+package com.Maxim.chapter05;
 // Применение оператора Ьreak с меткой для выхода из вложенных циклов.
 public class BreakToLabel {
     public static void main(String[] args){

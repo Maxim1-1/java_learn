@@ -1,6 +1,6 @@
 /* Это старый подход к обработке аргументов переменной длины!!! */
 
-package Chapter07;
+package com.Maxim.chapter07;
 // Использовать массив для передачи методу переменной количество аргументов.
 public class UseArrayToPassVariableToMethod16 {
     static void vaTest(int v[]) {

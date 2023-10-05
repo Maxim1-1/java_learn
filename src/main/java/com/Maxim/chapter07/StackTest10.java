@@ -1,5 +1,5 @@
 //Усовершенствованный класс Stack, в котором используется свойство длины массива
-package Chapter07;
+package com.Maxim.chapter07;
 
 class Stack10 {
     private int stck[];

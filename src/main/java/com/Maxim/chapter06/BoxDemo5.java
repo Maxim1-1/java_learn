@@ -1,4 +1,4 @@
-package Chapter06;
+package com.Maxim.chapter06;
 // Перегрузка методов
 class Box5 {
     double width;

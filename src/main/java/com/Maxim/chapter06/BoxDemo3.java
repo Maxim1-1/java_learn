@@ -1,5 +1,5 @@
 
-package Chapter06;
+package com.Maxim.com.Maxim.chapter06;
 // В этой программе применяется метод с параметрами
 class Box3 {
     double width;

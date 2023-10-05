@@ -1,4 +1,4 @@
-package Chapter09.DefaultMethods;
+package com.Maxim.chapter09;
 
 // Пример использования реализации метода по умолчанию
 

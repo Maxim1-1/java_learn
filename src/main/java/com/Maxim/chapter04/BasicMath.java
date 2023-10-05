@@ -1,4 +1,4 @@
-package Chapter04;
+package com.Maxim.chapter04;
 // Продемонстрировать основные арифметические операции
 public class BasicMath {
     public static void main(String[] args) {

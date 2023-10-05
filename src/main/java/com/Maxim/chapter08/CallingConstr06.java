@@ -1,4 +1,4 @@
-package Chapter08;
+package com.Maxim.chapter08;
 // Порядок вызова конструкторов (стр. 235)
 class supA {
     supA(){

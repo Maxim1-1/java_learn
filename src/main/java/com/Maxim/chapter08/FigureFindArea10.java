@@ -1,4 +1,4 @@
-package Chapter08;
+package com.Maxim.chapter08;
 
 // Создается суперкласс Figure для хранения размеров двумерного объекта
 class Figure {

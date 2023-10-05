@@ -1,4 +1,4 @@
-package Chapter07;
+package com.Maxim.chapter07;
 // Применить автоматическое преобразование типов к перегрузке
 class OverLoad2 {
     void test() {

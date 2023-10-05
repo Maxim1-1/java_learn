@@ -1,8 +1,8 @@
-package Chapter09.pkg02;
+package com.Maxim.chapter09;
 
 class OtherPackage {
     OtherPackage() {
-        Chapter09.pkg01.Protection pkgObject02 = new Chapter09.pkg01.Protection();
+        com.Maxim.chapter09.pkg01.Protection pkgObject02 = new com.Maxim.chapter09.pkg01.Protection();
         System.out.println("Конструктор из другого пакета pkg02");
 
         //ОШИБКА!!! доступно только для данного класса Protection или пакета pkg01

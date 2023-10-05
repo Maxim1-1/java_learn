@@ -1,4 +1,4 @@
-package Chapter07;
+package com.Maxim.chapter07;
 //Использовать аргументы переменной длины вместе со стандартными аргументами
 class VarArgs18 {
     // msg - обычный параметр

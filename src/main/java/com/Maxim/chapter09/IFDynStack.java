@@ -1,4 +1,4 @@
-package Chapter09.Stack;
+package com.Maxim.chapter09;
 
 // Реализация "наращиваемого" стека
 class DynStack implements IntStack {

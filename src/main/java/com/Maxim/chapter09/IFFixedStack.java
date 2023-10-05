@@ -1,4 +1,4 @@
-package Chapter09.Stack;
+package com.Maxim.chapter09;
 
 // Реализация интерфейса IntStack для стека фиксированного размера
 class FixedStack implements IntStack {

@@ -1,4 +1,4 @@
-package Chapter08;
+package com.Maxim.chapter08;
 
 // В этой программе наследование применяется для расширения класса Вох (стр. 224 - 227)
 class Box {

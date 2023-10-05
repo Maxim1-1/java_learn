@@ -1,4 +1,4 @@
-package Chapter08;
+package com.Maxim.chapter08;
 
 // Применение абстрактных методов и классов
 abstract class Figure11 {

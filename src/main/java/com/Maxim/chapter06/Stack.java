@@ -3,7 +3,7 @@
    В этом классе определяется целочисленный стек, где можно хранить до 10 целочисленных значений.
 
 */
-package Chapter06;
+package com.Maxim.chapter06;
 
 public class Stack {
     int[] stck = new int[10];

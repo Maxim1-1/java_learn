@@ -1,5 +1,5 @@
 //Использовать оператор цикла do-while для выбора пункта меню.
-package Chapter05;
+package com.Maxim.chapter05;
 
 public class ChoiceMenu {
     public static void main(String[] args)

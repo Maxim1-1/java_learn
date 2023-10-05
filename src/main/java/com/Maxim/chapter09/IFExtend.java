@@ -1,4 +1,4 @@
-package Chapter09.ExtendsInterfaces;
+package com.Maxim.chapter09.ExtendsInterfaces;
 // Пример расширения интерфейсов
 
 // Один интерфейс может расширять другой

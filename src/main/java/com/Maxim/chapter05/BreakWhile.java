@@ -1,5 +1,5 @@
 
-package Chapter05;
+package com.Maxim.chapter05;
 // Применение оператора break во вложенных циклах
 public class BreakWhile {
     public static void main (String[] args) {

@@ -1,4 +1,4 @@
-package Chapter04;
+package com.Maxim.chapter04;
 //Сдвиг влево значения типа byte
 public class ByteShift {
     public static void main(String[] args) {

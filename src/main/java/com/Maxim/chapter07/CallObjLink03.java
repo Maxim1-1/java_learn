@@ -1,4 +1,4 @@
-package Chapter07;
+package com.Maxim.chapter07;
 // Объекты передаются по ссылке на них.
 class Test03 {
     int a, b;

@@ -1,5 +1,5 @@
 
-package Chapter06;
+package com.Maxim.chapter06;
 // Применение класса Stack
 public class TestStack {
     public static void main (String[] args) {

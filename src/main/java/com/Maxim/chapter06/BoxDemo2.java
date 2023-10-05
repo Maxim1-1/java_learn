@@ -1,4 +1,4 @@
-package Chapter06;
+package com.Maxim.chapter06;
 // В этой программе объявляются два объекта класса Вох
 class Box2 {
     double width;

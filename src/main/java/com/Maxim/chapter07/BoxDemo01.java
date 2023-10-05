@@ -1,5 +1,5 @@
 
-package Chapter07;
+package com.Maxim.chapter07;
 // В этой версии класса Вох один объект допускается инициализировать другим объектом
 class Box6 {
     double width;

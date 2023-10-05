@@ -1,4 +1,4 @@
-package Chapter09.pkg01;
+package com.Maxim.chapter09;
 
 class SamePackage {
     SamePackage() {

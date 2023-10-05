@@ -1,4 +1,4 @@
-package Chapter04;
+package com.Maxim.chapter04;
 //Продемонстрировать применение поразрядных логических операций
 public class BitLogic {
     public static void main(String[] args) {

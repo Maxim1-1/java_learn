@@ -1,4 +1,4 @@
-package Chapter09.Stack;
+package com.Maxim.chapter09;
 
 // Создать переменную интерфейса и обратиться к обоим стекам через нее
 class IFTestЗ {

@@ -14,7 +14,6 @@ public class GameRunner {
         Reader readerConsole = new Reader();
         Writer writerConsole = new Writer();
         GameLogic gameLogic = new GameLogic();
-        Winner winnerPair = new Winner();
         ArrayList<Player> players = new ArrayList<>();
         ArrayList<Player> winnerTheRound;
 
@@ -29,12 +28,12 @@ public class GameRunner {
 
         System.out.printf("Раунд %s%n", counterRound);
         gameLogic.chooseElements(players);
-        winnerTheRound = winnerPair.determineWinner(players);
+        winnerTheRound = Winner.determineWinner(players);
 
         for (int round = 0; winnerTheRound.size()!=1; round++) {
             System.out.printf("Раунд %s%n", counterRound +1);
             gameLogic.chooseElements(winnerTheRound);
-            winnerTheRound = winnerPair.determineWinner(winnerTheRound);
+            winnerTheRound = Winner.determineWinner(winnerTheRound);
         }
         writerConsole.outputValueConsole(String.format("%s победил", winnerTheRound.get(0).namePlayer));
 

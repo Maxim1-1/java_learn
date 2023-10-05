@@ -1,4 +1,4 @@
-package Chapter07;
+package com.Maxim.chapter07;
 //Аргументы переменной длины и перегрузка
 class VarArgs19 {
     static void vaTest(int ... v) {

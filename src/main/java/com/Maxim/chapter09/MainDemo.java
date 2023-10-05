@@ -1,4 +1,4 @@
-package Chapter09.pkg01;
+package com.Maxim.chapter09;
 
 // получить экземпляры различных классов из пакета pkg01
 class MainDemo {

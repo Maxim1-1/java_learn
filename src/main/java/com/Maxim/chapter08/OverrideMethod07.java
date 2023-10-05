@@ -1,4 +1,4 @@
-package Chapter08;
+package com.Maxim.chapter08;
 
 // Переопределение методов (стр. 236 - 237)
 class E {

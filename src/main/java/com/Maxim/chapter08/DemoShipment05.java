@@ -1,5 +1,5 @@
 
-package Chapter08;
+package com.Maxim.chapter08;
 
 // Расширение класса BoxWeight созданием Подкласса BoxShipment
 // с добавлением поля cost - стоимость доставки (стр. 232 - 235)

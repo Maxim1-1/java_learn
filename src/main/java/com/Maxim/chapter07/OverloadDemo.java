@@ -1,4 +1,4 @@
-package Chapter07;
+package com.Maxim.chapter07;
 // Продемонстрировать перегрузку методов
 class Overload {
     void test() {

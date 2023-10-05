@@ -1,4 +1,4 @@
-package Chapter08;
+package com.Maxim.chapter08;
 
 class A {
     A() {      // конструктор по умолчанию
@@ -46,18 +46,18 @@ class ReferenceVariables04 {
 
 /* --------------------------------
 Посмотрим на ссылочные переменные.
-supA : Chapter08.A@16d3586
-clnA : Chapter08.A@154617c
-subB : Chapter08.B@a14482
-clnC : Chapter08.B@140e19d
-clnB : Chapter08.B@17327b6
-clnD : Chapter08.B@17327b6
+supA : com.Maxim.chapter08.A@16d3586
+clnA : com.Maxim.chapter08.A@154617c
+subB : com.Maxim.chapter08.B@a14482
+clnC : com.Maxim.chapter08.B@140e19d
+clnB : com.Maxim.chapter08.B@17327b6
+clnD : com.Maxim.chapter08.B@17327b6
 
 clnB == clnD, false
 
 clnB = clnD :
-clnB : Chapter08.B@14ae5a5
-clnD : Chapter08.B@14ae5a5
+clnB : com.Maxim.chapter08.B@14ae5a5
+clnD : com.Maxim.chapter08.B@14ae5a5
 
 clnB == clnD, true
 */

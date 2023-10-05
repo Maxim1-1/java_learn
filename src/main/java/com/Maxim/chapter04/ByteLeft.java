@@ -1,4 +1,4 @@
-package Chapter04;
+package com.Maxim.chapter04;
 // Сдвиг влево
 class ByteLeft {
     public static void main(String[] args) {

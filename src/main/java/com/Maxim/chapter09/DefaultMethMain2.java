@@ -1,4 +1,4 @@
-package Chapter09.DefaultMethods;
+package com.Maxim.chapter09;
 
 // В этом классе предоставляются реализации обоих методов
 class MyIFImp2 implements MyIF {

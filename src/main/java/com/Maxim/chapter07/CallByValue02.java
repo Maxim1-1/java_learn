@@ -1,4 +1,4 @@
-package Chapter07;
+package com.Maxim.chapter07;
 // Аргументы примитивных типов передаются по значению
 class Test {
     void meth(int i, int j) {

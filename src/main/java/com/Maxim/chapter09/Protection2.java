@@ -1,6 +1,6 @@
-package Chapter09.pkg02;
+package com.Maxim.chapter09;
 
-class Protection2 extends Chapter09.pkg01.Protection {
+class Protection2 extends com.Maxim.chapter09.Protection {
     Protection2() {
         System.out.println("Конструктор, унаследованный из другого пакета");
 

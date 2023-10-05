@@ -1,4 +1,4 @@
-package Chapter05;
+package com.Maxim.chapter05;
 // Продемонстрировать применение оператора continue
 public class Continue {
     public static void main (String[] args){

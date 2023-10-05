@@ -1,4 +1,4 @@
-package Chapter05;
+package com.Maxim.chapter05;
 //Применение цикла for в стиле for each для обращения к двухмерному массиву
 public class ForEachDuoArray {
     public static void main(String[] args) {

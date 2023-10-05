@@ -1,5 +1,5 @@
 
-package Chapter05;
+package com.Maxim.chapter05;
 // Оператор return немедленно прекращает выполнение метода, в теле которого он находится.
 public class Return {
     public static void main (String[] args) {

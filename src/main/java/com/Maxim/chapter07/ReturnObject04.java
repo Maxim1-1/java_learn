@@ -1,5 +1,5 @@
 
-package Chapter07;
+package com.Maxim.chapter07;
 // Возврат объекта.
 class Test04 {
     int a;

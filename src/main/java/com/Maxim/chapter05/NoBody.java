@@ -1,5 +1,5 @@
 
-package Chapter05;
+package com.Maxim.chapter05;
 // while - Целевая часть цикла может быть пустой
 public class NoBody {
     public static void main(String[] args) {

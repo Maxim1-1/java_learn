@@ -1,5 +1,5 @@
 
-package Chapter07;
+package com.Maxim.chapter07;
 // Демонстрация модификаторов доступа
 class Test07 {
     int a;         // доступ, определяемый по умолчанию

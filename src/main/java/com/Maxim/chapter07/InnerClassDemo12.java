@@ -1,4 +1,4 @@
-package Chapter07;
+package com.Maxim.chapter07;
 
 // Эта программа не подлежит компиляции !!!
 class Outer12 {

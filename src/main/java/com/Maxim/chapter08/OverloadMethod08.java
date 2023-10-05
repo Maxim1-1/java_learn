@@ -1,4 +1,4 @@
-package Chapter08;
+package com.Maxim.chapter08;
 
 // Перегрузка методов (стр. 238)
 class SupE {

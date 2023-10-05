@@ -1,4 +1,4 @@
-package Chapter04;
+package com.Maxim.chapter04;
 // Маскирование двоичных разрядов расширения знака
 public class HexByte {
     public static void main(String[] args) {

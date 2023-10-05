@@ -1,4 +1,4 @@
-package Chapter04;
+package com.Maxim.chapter04;
 //Продемонстрировать применение тернарной операции ?
 public class Ternary {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Chapter09.VariablesInInterfaces;
+package com.Maxim.chapter09;
 
 import java.util.Random;
 

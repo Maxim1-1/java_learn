@@ -1,5 +1,5 @@
 // Простой пример наследования (стр. 221)
-package Chapter08;
+package com.Maxim.chapter08;
 // создать суперкласс
 class SuperA {
     int i, j;

@@ -1,5 +1,5 @@
 // Обратимся к статическому методу meth() и статической переменной b по имени их класса.
-package Chapter07;
+package com.Maxim.chapter07;
 
 public class UseStaticByName09 {
     public static void main(String[] args) {
