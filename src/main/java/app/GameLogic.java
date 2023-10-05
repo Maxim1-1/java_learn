@@ -9,7 +9,7 @@ public class GameLogic {
 
     public void start() {
         Writer startMessage = new Writer();
-        startMessage.outputValueConsole("Для начала игры введите start");
+        startMessage.outputValueConsole("Для начала игры введите start, при вводе любого другого слова игра завершиться");
     }
 
     public ArrayList<Player> inputAndCreatePlayers() {
@@ -22,7 +22,7 @@ public class GameLogic {
         players = playersFactory.createPlayers(Integer.parseInt(readerConsole.getValueFromConsole()));
 
         for (int i = 0; i < players.size(); i++) {
-            writerConsole.outputValueConsole(String.format("Введите имя участника участника №%d", i + 1));
+            writerConsole.outputValueConsole(String.format("Введите имя участника №%d", i + 1));
             players.get(i).setNamePlayer(readerConsole.getValueFromConsole());
         }
         return players;
