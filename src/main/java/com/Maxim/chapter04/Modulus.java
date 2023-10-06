@@ -1,4 +1,4 @@
-package ;
+package com.Maxim.chapter04;
 // Операция деления по модулю% возвращает остаток от деления
 public class Modulus {
     public static void main(String[] args) {
