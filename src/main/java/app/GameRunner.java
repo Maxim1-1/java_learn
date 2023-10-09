@@ -2,6 +2,7 @@ package app;
 
 import app.console_utils.ReaderConsole;
 import app.console_utils.WriterConsole;
+
 import java.util.ArrayList;
 
 public class GameRunner {
@@ -9,6 +10,7 @@ public class GameRunner {
     public static void main(String[] args) {
 
         GameLogic.startGame();
+
         if (ReaderConsole.readStringValueFromConsole().equals("start")) {
             ArrayList<Player> players = new ArrayList<>();
             ArrayList<Player> winnerTheRound;
@@ -18,12 +20,18 @@ public class GameRunner {
             players = GameLogic.inputNamePlayers(players, countPlayers);
             winnerTheRound = players;
 
-            for (int round = 1; winnerTheRound.size() != 1; round++) {
-                WriterConsole.outputValueConsole(String.format("Раунд %s%n", round));
-                GameLogic.chooseElements(winnerTheRound);
-                winnerTheRound = FinderWinner.determineWinner(winnerTheRound);
+            try {
+
+                for (int round = 1; winnerTheRound.size() != 1; round++) {
+                    WriterConsole.outputValueConsole(String.format("Раунд %s%n ", round));
+                    GameLogic.chooseElements(winnerTheRound);
+                    winnerTheRound = GameLogic.getWinnerRound(winnerTheRound);
+                }
+
+                GameLogic.outputWinnerMessage(winnerTheRound);
+            } catch (NullPointerException e) {
+                WriterConsole.outputValueConsole("Ничья");
             }
-        GameLogic.outputWinnerMessage(winnerTheRound);
 
         } else {
             WriterConsole.outputValueConsole("игра завершена");

@@ -1,5 +1,7 @@
 package app;
 
+import app.console_utils.WriterConsole;
+
 import java.util.*;
 
 public class FinderWinner {
@@ -34,8 +36,7 @@ public class FinderWinner {
         } else if (uniqueElementsList.size() == 1) {
             return players;
         } else {
-            winners = null;
-            System.out.println("ничья, игра окончена");
+            winners=null;
         }
         return winners;
     }

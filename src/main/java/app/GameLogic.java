@@ -42,13 +42,10 @@ public class GameLogic {
         }
     }
 
-//    protected ArrayList<Player> getWinnerRound(ArrayList<Player> players) {
-//        GameLogic gameLogic = new GameLogic();
-//        gameLogic.chooseElements(players);
-//        ArrayList<Player> winnerTheRound;
-//        return winnerTheRound = FinderWinner.determineWinner(players);
-//
-//    }
+    protected static ArrayList<Player> getWinnerRound(ArrayList<Player> players) {
+        return FinderWinner.determineWinner(players);
+    }
+
 
     protected static void outputWinnerMessage (ArrayList<Player> winnerTheRound) {
         WriterConsole.outputValueConsole(String.format("%s победил", winnerTheRound.get(0).getNamePlayer()));
