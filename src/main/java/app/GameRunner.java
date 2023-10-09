@@ -7,24 +7,19 @@ import java.util.ArrayList;
 public class GameRunner {
 
     public static void main(String[] args) {
-        int counterRound = 1;
 
         GameLogic.startGame();
         if (ReaderConsole.readStringValueFromConsole().equals("start")) {
             ArrayList<Player> players = new ArrayList<>();
-            ArrayList<Player> winnerTheRound=players;
+            ArrayList<Player> winnerTheRound;
 
             int countPlayers = GameLogic.inputCountPlayers();
 
             players = GameLogic.inputNamePlayers(players, countPlayers);
             winnerTheRound = players;
 
-//            System.out.printf("Раунд %s%n", counterRound);
-//            GameLogic.chooseElements(players);
-//            winnerTheRound = FinderWinner.determineWinner(players);
-
-            for (int round = 0; winnerTheRound.size() != 1; round++) {
-                System.out.printf("Раунд %s%n", counterRound + 1);
+            for (int round = 1; winnerTheRound.size() != 1; round++) {
+                WriterConsole.outputValueConsole(String.format("Раунд %s%n", round));
                 GameLogic.chooseElements(winnerTheRound);
                 winnerTheRound = FinderWinner.determineWinner(winnerTheRound);
             }
