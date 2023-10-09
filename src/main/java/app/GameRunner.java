@@ -1,41 +1,38 @@
 package app;
 
-import app.console_utils.Reader;
-import app.console_utils.Writer;
-
+import app.console_utils.ReaderConsole;
+import app.console_utils.WriterConsole;
 import java.util.ArrayList;
 
 public class GameRunner {
 
     public static void main(String[] args) {
+        int counterRound = 1;
 
-        int counterRound =1;
+        GameLogic.startGame();
+        if (ReaderConsole.readStringValueFromConsole().equals("start")) {
+            ArrayList<Player> players = new ArrayList<>();
+            ArrayList<Player> winnerTheRound=players;
 
-        Reader readerConsole = new Reader();
-        Writer writerConsole = new Writer();
-        GameLogic gameLogic = new GameLogic();
-        ArrayList<Player> players = new ArrayList<>();
-        ArrayList<Player> winnerTheRound;
+            int countPlayers = GameLogic.inputCountPlayers();
 
-        gameLogic.start();
+            players = GameLogic.inputNamePlayers(players, countPlayers);
+            winnerTheRound = players;
 
-        if (readerConsole.getValueFromConsole().equals("start")) {
-            players = gameLogic.inputAndCreatePlayers();
+//            System.out.printf("Раунд %s%n", counterRound);
+//            GameLogic.chooseElements(players);
+//            winnerTheRound = FinderWinner.determineWinner(players);
+
+            for (int round = 0; winnerTheRound.size() != 1; round++) {
+                System.out.printf("Раунд %s%n", counterRound + 1);
+                GameLogic.chooseElements(winnerTheRound);
+                winnerTheRound = FinderWinner.determineWinner(winnerTheRound);
+            }
+        GameLogic.outputWinnerMessage(winnerTheRound);
 
         } else {
-            writerConsole.outputValueConsole("игра завершена");
+            WriterConsole.outputValueConsole("игра завершена");
         }
-
-        System.out.printf("Раунд %s%n", counterRound);
-        gameLogic.chooseElements(players);
-        winnerTheRound = Winner.determineWinner(players);
-
-        for (int round = 0; winnerTheRound.size()!=1; round++) {
-            System.out.printf("Раунд %s%n", counterRound +1);
-            gameLogic.chooseElements(winnerTheRound);
-            winnerTheRound = Winner.determineWinner(winnerTheRound);
-        }
-        writerConsole.outputValueConsole(String.format("%s победил", winnerTheRound.get(0).namePlayer));
-
     }
+
 }

@@ -1,8 +1,15 @@
-//package app;
-//
-//public class Field {
-//    Field (Player firstPlayer, Player secondPlayer) {
-//        GameLogic.
-//    }
-//
-//}
+package app;
+
+import java.util.ArrayList;
+
+public class Field {
+    private int numberRound;
+    private ArrayList<Player> ListPlayers;
+
+    Field (ArrayList<Player> players) {
+        ListPlayers = players;
+    }
+
+
+
+}

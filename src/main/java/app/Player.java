@@ -2,8 +2,12 @@ package app;
 
 
 public class Player {
-    String namePlayer;
-    String playerElement;
+    protected void editNamePlayer(String namePlayer) {
+        this.namePlayer = namePlayer;
+    }
+
+    private String namePlayer;
+    private String playerElement;
 
     public String getPlayerElement() {
         return playerElement;
@@ -17,15 +21,8 @@ public class Player {
         this.namePlayer = namePlayer;
     }
 
-    Player() {
-    }
-
     public String getNamePlayer() {
         return this.namePlayer;
-    }
-
-    public void setNamePlayer(String namePlayer) {
-        this.namePlayer = namePlayer;
     }
 
 }

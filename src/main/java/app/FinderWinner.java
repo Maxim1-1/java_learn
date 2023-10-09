@@ -2,32 +2,13 @@ package app;
 
 import java.util.*;
 
-public class Winner {
+public class FinderWinner {
     protected static ArrayList<Player> determineWinner(ArrayList<Player> players) {
 
-        ArrayList<Player> winnerPlayers = new ArrayList<>();
-
         for (Player player : players) {
-            player.setNamePlayer(player.getNamePlayer().toLowerCase());
+            player.editNamePlayer(player.getNamePlayer().toLowerCase());
         }
-
-        if (players.size() == 2) {
-            String winnerElement = returnWinnerElement(players.get(0).getPlayerElement(), players.get(1).getPlayerElement());
-
-            if (players.get(0).getPlayerElement().equals(winnerElement) & players.get(1).getPlayerElement().equals(winnerElement)) {
-                winnerPlayers.add(players.get(0));
-                winnerPlayers.add(players.get(1));
-            } else if (players.get(0).getPlayerElement().equals(winnerElement)) {
-                winnerPlayers.add(players.get(0));
-            } else {
-                winnerPlayers.add(players.get(1));
-            }
-            return winnerPlayers;
-
-        } else {
             return returnWinnerFromSetUsers(players);
-
-        }
     }
 
     private static ArrayList<Player> returnWinnerFromSetUsers(ArrayList<Player> players) {
@@ -36,14 +17,10 @@ public class Winner {
         HashMap<Player, String> playersAndElements = new HashMap<>();
 
 
-        for (int i = 0; i < players.size(); i++) {
-            uniqueElements.add(players.get(i).getPlayerElement());
-            playersAndElements.put(players.get(i), players.get(i).getPlayerElement());
+        for (Player player : players) {
+            uniqueElements.add(player.getPlayerElement());
+            playersAndElements.put(player, player.getPlayerElement());
         }
-
-//        for (int i = 0; i < players.size(); i++) {
-//            playersAndElements.put(players.get(i), players.get(i).getPlayerElement());
-//        }
 
         ArrayList<String> uniqueElementsList = new ArrayList<>(uniqueElements);
 
@@ -62,7 +39,6 @@ public class Winner {
         }
         return winners;
     }
-
 
     private static String returnWinnerElement(String firstElement, String secondElement) {
 
