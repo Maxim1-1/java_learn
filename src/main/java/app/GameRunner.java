@@ -23,7 +23,7 @@ public class GameRunner {
             try {
 
                 for (int round = 1; winnerTheRound.size() != 1; round++) {
-                    WriterConsole.outputValueConsole(String.format("Раунд %s%n ", round));
+                    WriterConsole.outputValueConsole(String.format("Раунд %s", round));
                     GameLogic.chooseElements(winnerTheRound);
                     winnerTheRound = GameLogic.getWinnerRound(winnerTheRound);
                 }
