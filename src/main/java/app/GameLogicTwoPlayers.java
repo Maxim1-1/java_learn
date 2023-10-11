@@ -5,7 +5,7 @@ import app.console_utils.WriterConsole;
 
 import java.util.*;
 
-public class GameLogic2Players {
+public class GameLogicTwoPlayers {
     private final Field field = new Field();
 
     protected void startGame() {
@@ -13,23 +13,24 @@ public class GameLogic2Players {
 
         try {
             if (ReaderConsole.readStringValueFromConsole().equals("start")) {
-                WriterConsole.outputValueConsole("Введите цифрой количество участников, принимаются только целые числа");
-                int countPlayers = ReaderConsole.readIntValueFromConsole();
+                FinderWinner finder = new FinderWinner();
+                int countPlayers = 2;
 
                 ArrayList<Player> players;
 
                 players = inputPlayersName(countPlayers);
-                inputPlayerElements(players);
 
-                FinderWinner finder = new FinderWinner();
+                inputPlayersElement(players.get(0).getNamePlayer());
+                field.setElements(players.get(0), getPlayerElementFromConsole());
+                inputPlayersElement(players.get(1).getNamePlayer());
+                field.setElements(players.get(1), getPlayerElementFromConsole());
 
                 while (field.getPlayersElements().size() != 1) {
-                    int countRound = 0;
-                    WriterConsole.outputValueConsole(String.format("Раунд %d", countRound ++));
-                    WriterConsole.outputValueConsole(String.format("%s, выбери свой элемент", players.get(0).getNamePlayer()));
-                    field.setElements(players.get(0), getPlayerElementFromConsole());
-                    WriterConsole.outputValueConsole(String.format("%s, выбери свой элемент",players.get(1).getNamePlayer()));
-                    field.setElements(players.get(1), getPlayerElementFromConsole());
+
+                    for (Map.Entry<Player, Element> player : field.getPlayersElements().entrySet()) {
+                        inputPlayersElement(player.getKey().getNamePlayer());
+                        field.setElements(player.getKey(), getPlayerElementFromConsole());
+                    }
                     finder.checkWinnerRound();
                 }
 
@@ -45,6 +46,10 @@ public class GameLogic2Players {
 
     }
 
+    private void inputPlayersElement(String namePlayer) {
+        WriterConsole.outputValueConsole(String.format("%s, выбери свой элемент", namePlayer));
+    }
+
 
     private ArrayList<Player> inputPlayersName(int countPlayers) {
         ArrayList<Player> players = new ArrayList<>();
@@ -53,13 +58,6 @@ public class GameLogic2Players {
             players.add(new Player(ReaderConsole.readStringValueFromConsole()));
         }
         return players;
-    }
-
-    private void inputPlayerElements(ArrayList<Player> players) {
-        for (Player player : players) {
-            WriterConsole.outputValueConsole(String.format("%s, выбери свой элемент", player.getNamePlayer()));
-            field.setElements(player, getPlayerElementFromConsole());
-        }
     }
 
     private Element getPlayerElementFromConsole() {
@@ -86,7 +84,7 @@ public class GameLogic2Players {
             } else if (uniqueElements.size() == 1) {
                 field.getPlayersElements();
             } else {
-                field.setElements();
+                field.setElements(null, null);
             }
         }
 
@@ -113,10 +111,3 @@ public class GameLogic2Players {
     }
 
 }
-
-
-//                for (Map.Entry<Player, Element> player : field.getPlayersElements().entrySet()) {
-//                    if (!player.getValue().equals(winnersElement)) {
-//                        field.removeElements(player.getKey());
-//                    }
-//                }

@@ -9,14 +9,6 @@ public class Player {
     private String namePlayer;
     private Element playerElement;
 
-    public Element getPlayerElement() {
-        return playerElement;
-    }
-
-    public void setPlayerElement(Element playerElement) {
-        this.playerElement = playerElement;
-    }
-
     Player(String namePlayer) {
         this.namePlayer = namePlayer;
     }
