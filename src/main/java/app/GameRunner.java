@@ -1,41 +1,35 @@
 package app;
 
-import app.console_utils.ReaderConsole;
-import app.console_utils.WriterConsole;
-
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameRunner {
 
     public static void main(String[] args) {
+        GameLogic2Players gl = new GameLogic2Players();
+        gl.startGame();
 
-        GameLogic.startGame();
 
-        if (ReaderConsole.readStringValueFromConsole().equals("start")) {
-            ArrayList<Player> players = new ArrayList<>();
-            ArrayList<Player> winnerTheRound;
+//        HashMap<Player, Element> test = new HashMap<>();
+//        test.put(new Player("test"), Element.PAPER);
+//        test.put(new Player("test1"), Element.PAPER);
 
-            int countPlayers = GameLogic.inputCountPlayers();
+//        Field field = new Field();
+//        field.setElements(new Player("test"), Element.PAPER);
+//        field.setElements(new Player("test1"), Element.STONE);
+//        System.out.println(field.getPlayersElements());
+//
+//
+//        field.getPlayersElements().entrySet().removeIf(e -> e.getValue()==Element.STONE);
 
-            players = GameLogic.inputNamePlayers(players, countPlayers);
-            winnerTheRound = players;
+//        for (Map.Entry<Player, Element> player : field.getPlayersElements().entrySet()) {
+//
+//                field.removeElements(player.getKey());
+//
+//        }
 
-            try {
+//        System.out.println(field.getPlayersElements());
 
-                for (int round = 1; winnerTheRound.size() != 1; round++) {
-                    WriterConsole.outputValueConsole(String.format("Раунд %s", round));
-                    GameLogic.chooseElements(winnerTheRound);
-                    winnerTheRound = GameLogic.getWinnerRound(winnerTheRound);
-                }
-
-                GameLogic.outputWinnerMessage(winnerTheRound);
-            } catch (NullPointerException e) {
-                WriterConsole.outputValueConsole("Ничья");
-            }
-
-        } else {
-            WriterConsole.outputValueConsole("игра завершена");
-        }
     }
 
 }

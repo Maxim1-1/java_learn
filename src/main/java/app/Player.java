@@ -7,13 +7,13 @@ public class Player {
     }
 
     private String namePlayer;
-    private String playerElement;
+    private Element playerElement;
 
-    public String getPlayerElement() {
+    public Element getPlayerElement() {
         return playerElement;
     }
 
-    public void setPlayerElement(String playerElement) {
+    public void setPlayerElement(Element playerElement) {
         this.playerElement = playerElement;
     }
 

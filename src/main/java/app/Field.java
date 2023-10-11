@@ -1,14 +1,25 @@
 package app;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Field {
-    private int numberRound;
-    private ArrayList<Player> ListPlayers;
+    private Map<Player,Element> playersElements=new HashMap<>();
 
-    Field (ArrayList<Player> players) {
-        ListPlayers = players;
+    public Map<Player, Element> getPlayersElements() {
+        return playersElements;
     }
+
+    public void setElements(Player player, Element element) {
+        playersElements.put(player,element);
+    }
+    public void setElements() {
+        playersElements = null;
+    }
+    public void removeElements (Player player) {
+        playersElements.remove(player);
+    }
+
 
 
 
