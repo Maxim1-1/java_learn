@@ -5,10 +5,10 @@ import app.console_utils.WriterConsole;
 
 import java.util.*;
 
-public class GameLogicTwoPlayers {
+public class GameLogicTwoPlayers implements GameLogic{
     private final Field field = new Field();
 
-    protected void startGame() {
+    public void start() {
         WriterConsole.outputValueConsole("Для начала игры введите start, при вводе любого другого слова игра завершиться");
 
         try {
