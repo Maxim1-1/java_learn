@@ -31,11 +31,11 @@ public class FirstTask {
 
         for (int i = 0; i < array.length; i++) {
 
-            int[] newMassive = Arrays.copyOfRange(array, i + 1, array.length);
+            int[] newArray = Arrays.copyOfRange(array, i + 1, array.length);
 
-            for (int j = 0; j < newMassive.length; j++) {
+            for (int j = 0; j < newArray.length; j++) {
 
-                if (array[i] + newMassive[j] == number) {
+                if (array[i] + newArray[j] == number) {
                     result.add(i);
                     result.add((i + j + 1));
                 }
