@@ -18,11 +18,11 @@ import java.util.Arrays;
 
 public class FirstTask {
 
-    static int[] array = {8, 1, 118, 6, 15, 67};
+    static int[] array = {15, 8, 3, 17};
 
     public static void main(String[] args) {
 
-        System.out.print(task1(16));
+        System.out.print(task1(23));
     }
 
     public static ArrayList<Integer> task1(int number) {
@@ -31,13 +31,11 @@ public class FirstTask {
 
         for (int i = 0; i < array.length; i++) {
 
-            int[] newArray = Arrays.copyOfRange(array, i + 1, array.length);
+            for (int j = i; j < array.length; j++) {
 
-            for (int j = 0; j < newArray.length; j++) {
-
-                if (array[i] + newArray[j] == number) {
+                if (array[i] + array[j] == number) {
                     result.add(i);
-                    result.add((i + j + 1));
+                    result.add((j));
                 }
             }
         }
