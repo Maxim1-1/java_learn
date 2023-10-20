@@ -1,33 +1,28 @@
 package task_1_2;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class FirstTask {
 
-    static int[] array = {15, 8, 3, 17};
+    static int[] array = {2, 7, 11, 15};
 
     public static void main(String[] args) {
 
-        System.out.print(task1(23));
+        System.out.print(twoSum1(array, 9));
     }
 
-    public static ArrayList<Integer> task1(int number) {
+    public static int[] twoSum1(int[] nums, int target) {
+        Map<Integer, Integer> numMap = new HashMap<>();
+        int n = nums.length;
 
-        ArrayList<Integer> result = new ArrayList<>();
-
-        for (int i = 0; i < array.length; i++) {
-
-            for (int j = i; j < array.length; j++) {
-
-                if (array[i] + array[j] == number) {
-                    result.add(i);
-                    result.add((j));
-                }
+        for (int i = 0; i < n; i++) {
+            int complement = target - nums[i];
+            if (numMap.containsKey(complement)) {
+                return new int[]{numMap.get(complement), i};
             }
+            numMap.put(nums[i], i);
         }
-        return result;
+
+        return new int[]{}; // No solution found
     }
-
-
 }
-
