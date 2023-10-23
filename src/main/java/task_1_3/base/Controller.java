@@ -1,11 +1,12 @@
-package app.console_utils;
+package task_1_3.base;
+
 import java.util.Scanner;
 
-public class Reader {
-    public String getValueFromConsole () {
+public class Controller {
+
+    public String getStringValueFromConsole () {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
-
 
 }

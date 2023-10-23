@@ -1,7 +1,7 @@
-package app;
+package app_1_1;
 
-import app.console_utils.Reader;
-import app.console_utils.Writer;
+import app_1_1.console_utils.Reader;
+import app_1_1.console_utils.Writer;
 
 import java.util.*;
 

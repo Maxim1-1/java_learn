@@ -1,0 +1,51 @@
+package task_1_3.developer;
+
+import task_1_3.developer.developer_model.FacadeModel;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class DeveloperView {
+
+    private HashMap<String,String> outputUserData =  new HashMap<>();
+    public HashMap<String,String> getOutputUserData() {
+        return outputUserData;
+    }
+
+    public void create () {
+        // раздробить метод мб
+        FacadeModel facadeModel = new FacadeModel();
+
+        ArrayList<String> dataDeveloperModel =  facadeModel.getDataAboutDeveloperModel();
+
+        for (String  fieldModel:dataDeveloperModel) {
+            System.out.println(String.format("Введите %s",fieldModel));
+            // тут нужно написать чтобы скилы вводились через запятую
+            Scanner scanner = new Scanner(System.in);
+            outputUserData.put(fieldModel,scanner.nextLine());
+        }
+
+    }
+
+    public void read () {
+
+        FacadeModel facadeModel = new FacadeModel();
+
+//        ArrayList<String> dataDevelopers=  facadeModel.getAllDevelopersData();
+//         System.out.println(String.format(dataDevelopers));
+    }
+
+    public void update () {
+        System.out.println(String.format("Укажите id записи которую необходимо изменить и <параметр>:<новое значение>"));
+        // 11, firstName:john, ...
+    }
+
+    public void delete () {
+        System.out.println(String.format("Укажите id записи которую необходимо удалить и <параметр>:<новое значение>"));
+        // 11, firstName:john, ...
+    }
+
+
+
+}
