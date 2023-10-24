@@ -37,8 +37,15 @@ public class DeveloperView {
     }
 
     public void update () {
-        System.out.println(String.format("Укажите id записи которую необходимо изменить и <параметр>:<новое значение>"));
-        // 11, firstName:john, ...
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(String.format("Укажите id записи"));
+        outputUserData.put("id",scanner.nextLine());
+
+        System.out.println(String.format("Какой параметр хотите изменить"));
+        outputUserData.put("oldParam",scanner.nextLine());
+
+        System.out.println(String.format("Новое значение"));
+        outputUserData.put("newValue",scanner.nextLine());
     }
 
     public void delete () {

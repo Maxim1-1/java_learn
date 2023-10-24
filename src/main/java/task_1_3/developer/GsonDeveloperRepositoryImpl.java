@@ -16,6 +16,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -23,15 +24,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
-    String path = "C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\task_1_3\\data\\developer.json";
-
-
+    String path = "src/main/java/task_1_3/data/developer.json";
 
 
     public String readDataFromFileDeveloper() throws IOException {
 
 
-        try  {
+        try {
             FileReader reader = new FileReader(path);
 
             JSONParser jsonParser = new JSONParser();
@@ -45,8 +44,6 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-
 
     }
 
@@ -74,7 +71,6 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
 
             // Запись обновленных данных обратно в файл JSON
             BufferedWriter writer = new BufferedWriter(new FileWriter(path));
-//            Gson gson = new GsonBuilder().setPrettyPrinting().create();
             writer.write(gson.toJson(jsonArray));
             writer.close();
 
@@ -90,7 +86,7 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
     }
 
 
-    public void addDataFromFileDeveloper(Developer developer)  {
+    public void addDataFromFileDeveloper(Developer developer) {
 
         Gson gson = new Gson();
 

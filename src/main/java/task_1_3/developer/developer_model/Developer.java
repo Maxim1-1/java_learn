@@ -11,6 +11,9 @@ public class Developer {
     transient Status status;
 
 
+    public int getId() {
+        return id;
+    }
 
     //    private static int nextId =1;
     private int id;
@@ -49,23 +52,21 @@ public class Developer {
         this.specialty = specialty;
     }
 
-    @Override
-    public String toString() {
-        return "Developer {" +
-                ", id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", specialty=" + specialty +
-                ", skills=" + skills +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Developer {" +
+//                ", id=" + id +
+//                ", firstName='" + firstName + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                ", specialty=" + specialty +
+//                ", skills=" + skills +
+//                '}';
+//    }
 
     public static ArrayList<String> getFieldsDeveloperModel() {
         ArrayList<String> dataModel = new ArrayList<>();
         dataModel.add("firstName");
         dataModel.add("lastName");
-        dataModel.add("specialty");
-        dataModel.add("skills");
         return dataModel;
     }
 

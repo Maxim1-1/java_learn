@@ -2,8 +2,10 @@ package task_1_3.developer.developer_atribute.skills;
 
 import task_1_3.base.Status;
 
+import java.util.ArrayList;
+
 public class Skill {
-    transient Status status=Status.DELETED;
+    Status status=Status.ACTIVE;
 
     public int getId() {
         return id;
@@ -27,6 +29,12 @@ public class Skill {
     public void setSkill(String skill) {
         status=Status.ACTIVE;
         this.skill = skill;
+    }
+
+    public static ArrayList<String> getFieldsSkillModel() {
+        ArrayList<String> dataModel = new ArrayList<>();
+        dataModel.add("skills");
+        return dataModel;
     }
 
     public void removeSkill() {

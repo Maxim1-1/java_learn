@@ -2,8 +2,10 @@ package task_1_3.developer.developer_atribute.specialty;
 
 import task_1_3.base.Status;
 
+import java.util.ArrayList;
+
 public class Specialty {
-    transient Status status;
+    transient Status status=Status.ACTIVE;
 
     public int getId() {
         return id;
@@ -39,6 +41,12 @@ public class Specialty {
 
     public void removeSpecialty() {
         this.status = Status.DELETED;
+    }
+
+    public static ArrayList<String> getFieldsSpecialtyModel() {
+        ArrayList<String> dataModel = new ArrayList<>();
+        dataModel.add("specialty");
+        return dataModel;
     }
 
 }
