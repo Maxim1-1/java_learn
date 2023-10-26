@@ -94,12 +94,10 @@ public class DeveloperController {
                 break;
 
             case "skills":
-                System.out.println("Перечислите ваши умения через запятую");
 
                 Developer updateDeveloperSkills = null;
 
-                String scannerSkills = new Scanner(System.in).nextLine();
-                String[] skills = scannerSkills.split(",");
+                String[] skills = dataFromConsole.get("newValue").split(",");
                 List<Skill> skillList = new ArrayList<>();
 
                 for (String skill : skills) {
