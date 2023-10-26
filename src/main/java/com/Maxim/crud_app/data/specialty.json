@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "fdgfg",
+    "status": "DELETED"
+  },
+  {
+    "id": 2,
+    "name": "sdfsdf"
+  },
+  {
+    "id": 3,
+    "name": "sdf",
+    "status": "ACTIVE"
+  },
+  {
+    "id": 4,
+    "name": "dsfd"
+  },
+  {
+    "id": 5,
+    "name": "sdf"
+  }
+]
