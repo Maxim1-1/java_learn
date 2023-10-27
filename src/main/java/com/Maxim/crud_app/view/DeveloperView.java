@@ -53,7 +53,6 @@ public class DeveloperView implements BaseView {
             outputUserData.put(param, scanner.nextLine());
         }
         return outputUserData;
-
     }
 
     public HashMap<String, String> getDataNewDeveloper() {

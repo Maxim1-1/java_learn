@@ -16,7 +16,6 @@ public class UpdateParamsDeveloper {
             if (developer.getId() == expectedId) {
                 operation.accept(developer);
                 return developer;
-
             }
         }
         return null;

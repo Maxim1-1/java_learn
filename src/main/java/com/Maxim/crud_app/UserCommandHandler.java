@@ -57,12 +57,13 @@ public class UserCommandHandler {
                 developerController.updateDeveloperById();
                 break;
 
-//            case "update specialty by id":
-//                specialtyController.updateDeveloperById();
-//                break;
+            case "update specialty by id":
+                specialtyController.updateSpecialtyById();
+                break;
 
             case "update skill by id":
-//                skillsController.updateDeveloperById();
+                skillsController.updateSkillsById();
+                break;
 
             case "add developer":
                 developerController.addNewDeveloper();

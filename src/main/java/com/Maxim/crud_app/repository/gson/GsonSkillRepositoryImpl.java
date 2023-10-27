@@ -42,7 +42,20 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
     }
 
     @Override
-    public void update(Skill skill) {
+    public void update(Skill updateSkill) {
+        List<Skill> allSkills;
+        allSkills = getAll();
+
+        for (int skill = 0; skill < allSkills.size(); skill++) {
+            {
+                if (allSkills.get(skill).getId() == updateSkill.getId()) {
+                    allSkills.set(skill, updateSkill);
+                }
+            }
+            write(allSkills, "C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\skills.json");
+            System.out.println("Update success");
+        }
+
 
     }
 
@@ -52,7 +65,6 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
         for (Skill skill : skills) {
             if (skill.getId() == deleteId) {
                 skill.setStatus(Status.DELETED);
-
             }
         }
         write(skills, "C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
@@ -68,8 +80,8 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
 
     public Integer getIdForNewSkill() {
         Integer maxId = getMaxIdFromRepository("C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
-        if ( maxId!= 1) {
-            return maxId+ 1;
+        if (maxId != 1) {
+            return maxId + 1;
         } else {
             return 1;
         }

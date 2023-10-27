@@ -29,5 +29,14 @@ public class SkillsView implements BaseView {
         return outputSkillData;
     }
 
+    public HashMap<String, String> requestDataForUpdateSkill() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(String.format("Укажите id записи"));
+        outputSkillData.put("id", scanner.nextLine());
+        System.out.println(String.format("Укажите новое значение скила"));
+        outputSkillData.put("newValueSkill", scanner.nextLine());
+        return outputSkillData;
+    }
+
 
 }

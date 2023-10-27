@@ -30,4 +30,13 @@ public class SpecialtyView implements BaseView {
         return outputSpecialtyData;
     }
 
+    public HashMap<String, String> requestDataForUpdateSpecialty() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(String.format("Укажите id записи"));
+        outputSpecialtyData.put("id", scanner.nextLine());
+        System.out.println(String.format("Укажите новое значение специльности"));
+        outputSpecialtyData.put("newValueSpecialty", scanner.nextLine());
+        return outputSpecialtyData;
+    }
+
 }

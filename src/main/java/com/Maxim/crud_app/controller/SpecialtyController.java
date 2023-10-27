@@ -2,16 +2,11 @@
 package com.Maxim.crud_app.controller;
 
 
-import com.Maxim.crud_app.model.Skill;
 import com.Maxim.crud_app.model.Specialty;
-import com.Maxim.crud_app.repository.gson.GsonSkillRepositoryImpl;
 import com.Maxim.crud_app.repository.gson.GsonSpecialtyRepositoryImpl;
-import com.Maxim.crud_app.view.SkillsView;
 import com.Maxim.crud_app.view.SpecialtyView;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashMap;
 
 public class SpecialtyController {
     public void getAllSpecialty() {
@@ -45,5 +40,17 @@ public class SpecialtyController {
         gsonSpecialtyRepository.save(specialty);
     }
 
+    public void updateSpecialtyById() {
+        SpecialtyView specialtyView = new SpecialtyView();
+        GsonSpecialtyRepositoryImpl gsonSpecialtyRepository = new GsonSpecialtyRepositoryImpl();
+        HashMap<String, String> dataFromConsole = specialtyView.requestDataForUpdateSpecialty();
+        Integer updateId = Integer.valueOf(dataFromConsole.get("id"));
 
+        for (Specialty spec : gsonSpecialtyRepository.getAll()) {
+            if (spec.getId() == updateId) {
+                spec.setName(dataFromConsole.get("newValueSpecialty"));
+                gsonSpecialtyRepository.update(spec);
+            }
+        }
+    }
 }

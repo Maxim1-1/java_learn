@@ -43,6 +43,18 @@ public class GsonSpecialtyRepositoryImpl implements SpecialtyRepository {
 
     @Override
     public void update(Specialty specialty) {
+        List<Specialty> allSpecialty;
+        allSpecialty = getAll();
+
+        for (int spec = 0; spec < allSpecialty.size(); spec++) {
+            {
+                if (allSpecialty.get(spec).getId() == specialty.getId()) {
+                    allSpecialty.set(spec, specialty);
+                }
+            }
+            write(allSpecialty, "C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\specialty.json");
+            System.out.println("Update success");
+        }
 
     }
 
