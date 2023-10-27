@@ -2,6 +2,8 @@ package com.Maxim.crud_app.model;
 
 import com.Maxim.crud_app.base.Status;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 
 public class Skill {
     public Status getStatus() {
@@ -10,6 +12,7 @@ public class Skill {
 
     public Skill() {
         setStatus(Status.ACTIVE);
+        this.id= ThreadLocalRandom.current().nextInt(1, Integer.MAX_VALUE);
     }
 
     public void setStatus(Status status) {

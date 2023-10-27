@@ -14,39 +14,32 @@ public class DeveloperView implements BaseView {
     private HashMap<String, String> outputUserData = new HashMap<>();
 
     public void outputDataAllDevelopers(List<Developer> developers) {
-
-        String skills = "";
-
+        StringBuilder skills = new StringBuilder();
         for (Developer developer : developers) {
-
             String specialty = developer.getSpecialty().getName();
-
             for (Skill skill : developer.getSkills()) {
-                skills += skill.getSkill() + ",";
-
+                skills.append(skill.getSkill()).append(",");
             }
-            // потом сделать через стринг буфер или что-то еще оптимальное
-            System.out.println("id: " + developer.getId() + ", First Name: " + developer.getFirstName() + ", Last Name: " + developer.getLastName() + ", Specialty: " + specialty + ", Skills: " + skills);
+            System.out.println("id: " + developer.getId() + ", First Name: " + developer.getFirstName() + ", Last Name: " + developer.getLastName() + ", Specialty: " + specialty + ", Skills: " + skills
+            +", Status: "+developer.getStatus());
         }
     }
 
-
     public void outputDataAboutDeveloperById(Developer developer) {
-        String skills = "";
+        StringBuilder skills = new StringBuilder();
         for (Skill skill : developer.getSkills()) {
-            skills += skill.getSkill() + ",";
+            skills.append(skill.getSkill()).append(",");
         }
-        // потом сделать через стринг буфер или что-то еще оптимальное
         System.out.println("id: " + developer.getId() + ", First Name: " + developer.getFirstName() + ", Last Name: "
-                + developer.getLastName() + ", Specialty: " + developer.getSpecialty().getName() + ", Skills: " + skills);
+                + developer.getLastName() + ", Specialty: " + developer.getSpecialty().getName() + ", Skills: " + skills+", Status: "+developer.getStatus());
     }
 
     public HashMap<String, String> requestDataForUpdateDeveloper() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(String.format("Укажите id записи"));
+        System.out.println("Укажите id записи");
         outputUserData.put("id", scanner.nextLine());
 
-        System.out.println(String.format("Выберите из списка один или несколько параметров(через запятую) для изменения: firstName, lastName, specialty, replace skills, add new skills"));
+        System.out.println("Выберите из списка один или несколько параметров(через запятую) для изменения: firstName, lastName, specialty, replace skills, add new skills");
         String[] params = scanner.nextLine().split(",");
         for (String param : params) {
             System.out.printf("Новое значение для %s%n", param);
@@ -58,13 +51,13 @@ public class DeveloperView implements BaseView {
     public HashMap<String, String> getDataNewDeveloper() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(String.format("Введите first Name"));
+        System.out.println("Введите first Name");
         outputUserData.put("firstName", scanner.nextLine());
-        System.out.println(String.format("Введите last Name"));
+        System.out.println("Введите last Name");
         outputUserData.put("lastName", scanner.nextLine());
-        System.out.println(String.format("Введите specialty"));// вызвать вьюху из special
+        System.out.println("Введите specialty");
         outputUserData.put("specialty", scanner.nextLine());
-        System.out.println(String.format("Введите skills через запятую"));// вызвать вьюху из skill
+        System.out.println("Введите skills через запятую");
         outputUserData.put("skills", scanner.nextLine());
         return outputUserData;
     }

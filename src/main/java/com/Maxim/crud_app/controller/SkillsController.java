@@ -43,7 +43,6 @@ public class SkillsController {
         List<Skill> skills = skillsDeveloper.stream().
                 map(skillName -> {
                     Skill skill = new Skill();
-                    skill.setId(gsonSkillRepository.getIdForNewSkill());
                     skill.setSkill(skillName);
                     return skill;
                 })

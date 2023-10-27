@@ -2,11 +2,14 @@ package com.Maxim.crud_app.model;
 
 import com.Maxim.crud_app.base.Status;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 
 public class Specialty {
 
     public Specialty() {
         setStatus(Status.ACTIVE);
+        this.id= ThreadLocalRandom.current().nextInt(1, Integer.MAX_VALUE);
     }
 
     private Status status = Status.ACTIVE;

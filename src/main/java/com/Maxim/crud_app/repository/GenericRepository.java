@@ -49,7 +49,4 @@ public interface GenericRepository<T, ID> {
         }
     }
 
-     int getMaxIdFromRepository  (String repositoryPath);
-
-
 }

@@ -13,28 +13,27 @@ public class SpecialtyView implements BaseView {
 
     public void outputDataAllSpecialty(List<Specialty> specialties) {
         for (Specialty specialty : specialties) {
-            // потом сделать через стринг буфер или что-то еще оптимальное
-            System.out.println("id: " + specialty.getId() + ", specialty: " + specialty.getName());
+            System.out.println("id: " + specialty.getId() + ", Specialty: " + specialty.getName()+", Status: "+specialty.getStatus());
         }
     }
 
     public void outputDataAboutSpecialtyById(Specialty specialty) {
-        System.out.println("id: " + specialty.getId() + ", Skills: " + specialty.getName());
+        System.out.println("id: " + specialty.getId() + ", Specialty: " + specialty.getName()+", Status: "+specialty.getStatus());
     }
 
     public HashMap<String,String> getDataNewSpecialty() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(String.format("Введите specialty"));
+        System.out.println("Введите specialty");
         outputSpecialtyData.put("specialty",scanner.nextLine());
         return outputSpecialtyData;
     }
 
     public HashMap<String, String> requestDataForUpdateSpecialty() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(String.format("Укажите id записи"));
+        System.out.println("Укажите id записи");
         outputSpecialtyData.put("id", scanner.nextLine());
-        System.out.println(String.format("Укажите новое значение специльности"));
+        System.out.println("Укажите новое значение специльности");
         outputSpecialtyData.put("newValueSpecialty", scanner.nextLine());
         return outputSpecialtyData;
     }

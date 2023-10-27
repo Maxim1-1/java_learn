@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GsonSpecialtyRepositoryImpl implements SpecialtyRepository {
 
-    String path = "src/main/java/task_1_3/data/specialty.json";
+    String path = "src/main/java/com/Maxim/crud_app/data/specialty.json";
 
 
     @Override
@@ -27,12 +27,9 @@ public class GsonSpecialtyRepositoryImpl implements SpecialtyRepository {
     @Override
     public List<Specialty> getAll() {
         Gson gson = new Gson();
-        // поменять путь
-        String jsonString = read("C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\specialty.json");
+        String jsonString = read(path);
         Type type = new TypeToken<List<Specialty>>(){}.getType();
-
         List<Specialty> specialties = gson.fromJson(jsonString,type);
-
         return specialties;
     }
 
@@ -52,7 +49,7 @@ public class GsonSpecialtyRepositoryImpl implements SpecialtyRepository {
                     allSpecialty.set(spec, specialty);
                 }
             }
-            write(allSpecialty, "C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\specialty.json");
+            write(allSpecialty, path);
             System.out.println("Update success");
         }
 
@@ -67,7 +64,7 @@ public class GsonSpecialtyRepositoryImpl implements SpecialtyRepository {
 
             }
         }
-        write(specialties,"C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
+        write(specialties,path);
 
     }
 
@@ -76,14 +73,5 @@ public class GsonSpecialtyRepositoryImpl implements SpecialtyRepository {
                 .anyMatch(spec -> spec.getName().equalsIgnoreCase(expectedSpecialty.getName()));
     }
 
-    public Integer getIdForNewSpecialty() {
-        Integer maxId = getMaxIdFromRepository("C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
-        if ( maxId!= 1) {
-            return maxId+ 1;
-        } else {
-            return 1;
-        }
-
-    }
 }
 

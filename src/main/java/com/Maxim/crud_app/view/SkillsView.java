@@ -12,28 +12,27 @@ public class SkillsView implements BaseView {
 
     public void outputDataAllSkills(List<Skill> skills) {
         for (Skill skill : skills) {
-            // потом сделать через стринг буфер или что-то еще оптимальное
             outputSkillById(skill);
         }
     }
 
     public void outputSkillById(Skill skill) {
-        System.out.println("id: " + skill.getId() + ", Skills: " + skill.getSkill());
+        System.out.println("id: " + skill.getId() + ", Skills: " + skill.getSkill()+", Status: "+skill.getStatus());
     }
 
     public HashMap<String,String> getDataNewSkill() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(String.format("Введите skills через запятую"));
+        System.out.println("Введите skills через запятую");
         outputSkillData.put("skills",scanner.nextLine());
         return outputSkillData;
     }
 
     public HashMap<String, String> requestDataForUpdateSkill() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(String.format("Укажите id записи"));
+        System.out.println("Укажите id записи");
         outputSkillData.put("id", scanner.nextLine());
-        System.out.println(String.format("Укажите новое значение скила"));
+        System.out.println("Укажите новое значение скила");
         outputSkillData.put("newValueSkill", scanner.nextLine());
         return outputSkillData;
     }

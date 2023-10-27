@@ -63,5 +63,28 @@
     "id": 13,
     "firstName": "john",
     "lastName": "gfdg"
+  },
+  {
+    "status": "ACTIVE",
+    "id": 4,
+    "firstName": "Keks",
+    "lastName": "Z",
+    "specialty": {
+      "status": "ACTIVE",
+      "id": 0,
+      "name": "dog"
+    },
+    "skills": [
+      {
+        "status": "ACTIVE",
+        "id": 0,
+        "skill": "eat"
+      },
+      {
+        "status": "ACTIVE",
+        "id": 0,
+        "skill": "sleep"
+      }
+    ]
   }
 ]

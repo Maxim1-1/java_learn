@@ -110,8 +110,7 @@ public class DeveloperController {
         List<Skill> skills;
         HashMap<String, String> dataNewDeveloperFromConsole = developerView.getDataNewDeveloper();
 
-        Integer id = gsonDeveloperRepository.getIdForNewDeveloper();
-        String firstNameDeveloper = developerView.getDataNewDeveloper().get("firstName");
+        String firstNameDeveloper = dataNewDeveloperFromConsole.get("firstName");
         String lastNameDeveloper = dataNewDeveloperFromConsole.get("lastName");
         specialty.setName(dataNewDeveloperFromConsole.get("specialty"));
         List<String> skillsDeveloper = Arrays.asList(dataNewDeveloperFromConsole.get("skills").split(","));
@@ -123,7 +122,7 @@ public class DeveloperController {
                 })
                 .collect(Collectors.toList());
 
-        Developer developer = new Developer(firstNameDeveloper, lastNameDeveloper, id);
+        Developer developer = new Developer(firstNameDeveloper, lastNameDeveloper);
         developer.setSpecialty(specialty);
         developer.setSkills(skills);
 

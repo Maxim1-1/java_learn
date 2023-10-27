@@ -1,19 +1,21 @@
 package com.Maxim.crud_app.repository.gson;
 
 import com.Maxim.crud_app.base.Status;
-import com.Maxim.crud_app.model.Developer;
 import com.Maxim.crud_app.model.Skill;
-import com.Maxim.crud_app.model.Specialty;
 import com.Maxim.crud_app.repository.SkillRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class GsonSkillRepositoryImpl implements SkillRepository {
 
-    String path = "src/main/java/task_1_3/data/skills.json";
+    String path = "src/main/java/com/Maxim/crud_app/data/skills.json";
 
     @Override
     public Skill getById(Integer skillId) {
@@ -26,11 +28,9 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
     @Override
     public List<Skill> getAll() {
         Gson gson = new Gson();
-        // поменять путь
-        String jsonString = read("C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\skills.json");
+        String jsonString = read(path);
         Type type = new TypeToken<List<Skill>>() {
         }.getType();
-
         List<Skill> skills = gson.fromJson(jsonString, type);
 
         return skills;
@@ -38,6 +38,16 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
 
     @Override
     public void save(Skill skill) {
+        List<Skill> skills;
+        skills = getAll();
+        if (skills == null) {
+            skills = new ArrayList<>();
+        }
+        skills.add(skill);
+
+        write(skills, path);
+        System.out.println("Skill successfully added");
+
 
     }
 
@@ -52,7 +62,7 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
                     allSkills.set(skill, updateSkill);
                 }
             }
-            write(allSkills, "C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\skills.json");
+            write(allSkills, path);
             System.out.println("Update success");
         }
 
@@ -67,7 +77,7 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
                 skill.setStatus(Status.DELETED);
             }
         }
-        write(skills, "C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
+        write(skills, path);
 
 
     }
@@ -77,14 +87,4 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
                 .anyMatch(skill -> skill.getSkill().equalsIgnoreCase(expectedSkill.getSkill()));
     }
 
-
-    public Integer getIdForNewSkill() {
-        Integer maxId = getMaxIdFromRepository("C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
-        if (maxId != 1) {
-            return maxId + 1;
-        } else {
-            return 1;
-        }
-
-    }
 }

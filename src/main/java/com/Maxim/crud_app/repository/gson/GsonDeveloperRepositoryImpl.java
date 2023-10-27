@@ -8,13 +8,12 @@ import com.Maxim.crud_app.repository.DeveloperRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.awt.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
-    String path = "src/main/java/task_1_3/data/developer.json";
+    String path = "src/main/java/com/Maxim/crud_app/data/developer.json";
 
 
     @Override
@@ -28,8 +27,7 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
     @Override
     public List<Developer> getAll() {
         Gson gson = new Gson();
-        // поменять путь
-        String jsonString = read("C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
+        String jsonString = read(path);
         Type type = new TypeToken<List<Developer>>() {
         }.getType();
 
@@ -47,9 +45,8 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
         }
         developers.add(developer);
 
-        write(developers, "C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
+        write(developers, path);
         System.out.println("Developer successfully added");
-
     }
 
     @Override
@@ -63,7 +60,7 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
                     developers.set(dev, developer);
                 }
             }
-            write(developers, "C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
+            write(developers, path);
             System.out.println("Update success");
         }
     }
@@ -78,17 +75,9 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
 
             }
         }
-        write(developers, "C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
+        write(developers, path);
     }
 
-    public Integer getIdForNewDeveloper() {
-        Integer maxId = getMaxIdFromRepository("C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
-        if (maxId != 1) {
-            return maxId + 1;
-        } else {
-            return 1;
-        }
-    }
 
     public void updateSkillAndSpecialty(Specialty specialty, List<Skill> skills) {
         GsonSkillRepositoryImpl gsonSkillRepository = new GsonSkillRepositoryImpl();
