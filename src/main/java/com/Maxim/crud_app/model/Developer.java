@@ -29,6 +29,7 @@ public class Developer {
         this.firstName = firstName;
         this.lastName = lastName;
         this.id = id;
+        setStatus(Status.ACTIVE);
     }
 
     public String getLastName() {
@@ -39,7 +40,6 @@ public class Developer {
             this.lastName = lastName;
 
     }
-
     public List<Skill> getSkills() {
         return skills;
     }
@@ -60,7 +60,7 @@ public class Developer {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public  void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 

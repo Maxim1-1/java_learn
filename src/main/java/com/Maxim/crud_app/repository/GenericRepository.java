@@ -13,7 +13,7 @@ public interface GenericRepository<T, ID> {
 
     List<T> getAll();
 
-    T save(T t);
+    void save(T t);
 
     void update(T t);
 
@@ -48,5 +48,8 @@ public interface GenericRepository<T, ID> {
 
         }
     }
+
+     int getMaxIdFromRepository  (String repositoryPath);
+
 
 }

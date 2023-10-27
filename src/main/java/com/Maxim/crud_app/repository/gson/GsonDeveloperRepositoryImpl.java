@@ -2,6 +2,8 @@ package com.Maxim.crud_app.repository.gson;
 
 import com.Maxim.crud_app.base.Status;
 import com.Maxim.crud_app.model.Developer;
+import com.Maxim.crud_app.model.Skill;
+import com.Maxim.crud_app.model.Specialty;
 import com.Maxim.crud_app.repository.DeveloperRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -37,13 +39,22 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
     }
 
     @Override
-    public Developer save(Developer developer) {
-        return null;
+    public void save(Developer developer) {
+        List<Developer> developers;
+        developers = getAll();
+        if (developers == null) {
+            developers = new ArrayList<>();
+        }
+        developers.add(developer);
+
+        write(developers, "C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
+        System.out.println("Developer successfully added");
+
     }
 
     @Override
     public void update(Developer developer) {
-        List<Developer> developers = new ArrayList<>();
+        List<Developer> developers;
         developers = getAll();
 
         for (int dev = 0; dev < developers.size(); dev++) {
@@ -52,11 +63,11 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
                     developers.set(dev, developer);
                 }
             }
-            int s =1 ;
             write(developers, "C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
-            System.out.println("Update");
+            System.out.println("Update success");
         }
     }
+
     @Override
     public void deleteById(Integer deleteId) {
         List<Developer> developers = getAll();
@@ -67,9 +78,31 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
 
             }
         }
-        write(developers,"C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
+        write(developers, "C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
+    }
 
+    public Integer getIdForNewDeveloper() {
+        Integer maxId = getMaxIdFromRepository("C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
+        if ( maxId!= 1) {
+            return maxId+ 1;
+        } else {
+            return 1;
+        }
+    }
 
+    public void updateSkillAndSpecialty (Specialty specialty, List<Skill> skills)
+    {
+        GsonSkillRepositoryImpl gsonSkillRepository = new GsonSkillRepositoryImpl();
+        GsonSpecialtyRepositoryImpl gsonSpecialtyRepository = new GsonSpecialtyRepositoryImpl();
+
+        if (!gsonSpecialtyRepository.isCheckTheValueInRepository(specialty)) {
+            gsonSpecialtyRepository.save(specialty);
+        }
+        for (Skill skill:skills) {
+            if (!gsonSkillRepository.isCheckTheValueInRepository(skill)) {
+                gsonSkillRepository.save(skill);
+            }
+        }
     }
 }
 

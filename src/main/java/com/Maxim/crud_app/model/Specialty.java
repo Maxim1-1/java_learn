@@ -4,6 +4,11 @@ import com.Maxim.crud_app.base.Status;
 
 
 public class Specialty {
+
+    public Specialty() {
+        setStatus(Status.ACTIVE);
+    }
+
     private Status status = Status.ACTIVE;
 
     public int getId() {
@@ -27,20 +32,11 @@ public class Specialty {
     private String name;
 
     public String getName() {
-        if (this.status.equals(Status.ACTIVE)) {
-            return name;
-        } else {
-            return null;
-        }
+        return name;
     }
 
     public void setName(String name) {
-        status = Status.ACTIVE;
         this.name = name;
-    }
-
-    public void removeSpecialty() {
-        this.status = Status.DELETED;
     }
 
 

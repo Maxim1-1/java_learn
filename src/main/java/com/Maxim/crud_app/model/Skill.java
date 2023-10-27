@@ -4,7 +4,19 @@ import com.Maxim.crud_app.base.Status;
 
 
 public class Skill {
-    private Status status=Status.ACTIVE;
+    public Status getStatus() {
+        return status;
+    }
+
+    public Skill() {
+        setStatus(Status.ACTIVE);
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    private Status status;
 
     public int getId() {
         return id;
@@ -16,17 +28,15 @@ public class Skill {
 
     private int id;
 
-     private String skill;
+    private String skill;
 
     public String getSkill() {
-        if (this.status.equals(Status.ACTIVE)) {
-            return skill;
-        }
-        return null;
+        return skill;
+
     }
 
     public void setSkill(String skill) {
-        status=Status.ACTIVE;
+
         this.skill = skill;
     }
 

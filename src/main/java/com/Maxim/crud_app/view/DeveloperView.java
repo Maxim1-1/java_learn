@@ -1,6 +1,7 @@
 package com.Maxim.crud_app.view;
 
 
+import com.Maxim.crud_app.base.BaseView;
 import com.Maxim.crud_app.model.Developer;
 import com.Maxim.crud_app.model.Skill;
 
@@ -8,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-public class DeveloperView {
+public class DeveloperView implements BaseView {
 
     private HashMap<String, String> outputUserData = new HashMap<>();
 
@@ -24,19 +25,13 @@ public class DeveloperView {
                 skills += skill.getSkill() + ",";
 
             }
-
             // потом сделать через стринг буфер или что-то еще оптимальное
             System.out.println("id: " + developer.getId() + ", First Name: " + developer.getFirstName() + ", Last Name: " + developer.getLastName() + ", Specialty: " + specialty + ", Skills: " + skills);
         }
     }
 
-    public Integer getId() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите id сущности");
-        return scanner.nextInt();
-    }
 
-    public void outputDeveloperById(Developer developer) {
+    public void outputDataAboutDeveloperById(Developer developer) {
         String skills = "";
         for (Skill skill : developer.getSkills()) {
             skills += skill.getSkill() + ",";
@@ -46,25 +41,32 @@ public class DeveloperView {
                 + developer.getLastName() + ", Specialty: " + developer.getSpecialty().getName() + ", Skills: " + skills);
     }
 
-    public HashMap<String, String> requestDataForUpdateDeveloper () {
+    public HashMap<String, String> requestDataForUpdateDeveloper() {
         Scanner scanner = new Scanner(System.in);
         System.out.println(String.format("Укажите id записи"));
-        outputUserData.put("id",scanner.nextLine());
+        outputUserData.put("id", scanner.nextLine());
 
         System.out.println(String.format("Выберите из списка один параметр для изменения: firstName, lastName, specialty, skills"));
-        outputUserData.put("param",scanner.nextLine());
+        outputUserData.put("params", scanner.nextLine());
 
         System.out.println(String.format("Новое значение"));
-        outputUserData.put("newValue",scanner.nextLine());
+        outputUserData.put("newValue", scanner.nextLine());
         return outputUserData;
 
     }
 
-//    public Integer getDeleteId() {
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Введите id сущности для удаления");
-//        return scanner.nextInt();
-//    }
+    public HashMap<String,String> getDataNewDeveloper() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println(String.format("Введите first Name"));
+        outputUserData.put("firstName",scanner.nextLine());
+        System.out.println(String.format("Введите last Name"));
+        outputUserData.put("lastName",scanner.nextLine());
+        System.out.println(String.format("Введите specialty"));// вызвать вьюху из special
+        outputUserData.put("specialty",scanner.nextLine());
+        System.out.println(String.format("Введите skills через запятую"));// вызвать вьюху из skill
+        outputUserData.put("skills",scanner.nextLine());
+        return outputUserData;
+    }
+
 }
-
-
