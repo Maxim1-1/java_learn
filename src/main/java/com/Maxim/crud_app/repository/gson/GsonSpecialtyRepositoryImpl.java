@@ -6,13 +6,14 @@ import com.Maxim.crud_app.repository.SpecialtyRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GsonSpecialtyRepositoryImpl implements SpecialtyRepository {
 
-    String path = "src/main/java/com/Maxim/crud_app/data/specialty.json";
+    String specialtyRepositoryPath = "src/main/java/com/Maxim/crud_app/data" + File.separator + "specialty.json";
 
 
     @Override
@@ -33,7 +34,7 @@ public class GsonSpecialtyRepositoryImpl implements SpecialtyRepository {
     public List<Specialty> getAll() {
         try {
             Gson gson = new Gson();
-            String jsonString = read(path);
+            String jsonString = read(specialtyRepositoryPath);
             Type type = new TypeToken<List<Specialty>>() {
             }.getType();
             List<Specialty> specialties = gson.fromJson(jsonString, type);
@@ -55,7 +56,7 @@ public class GsonSpecialtyRepositoryImpl implements SpecialtyRepository {
             }
             specialties.add(specialty);
 
-            write(specialties, path);
+            write(specialties, specialtyRepositoryPath);
             System.out.println("Specialty successfully added");
         } catch (NullPointerException e) {
             e.printStackTrace();
@@ -76,7 +77,7 @@ public class GsonSpecialtyRepositoryImpl implements SpecialtyRepository {
                         allSpecialty.set(spec, specialty);
                     }
                 }
-                write(allSpecialty, path);
+                write(allSpecialty, specialtyRepositoryPath);
                 System.out.println("Update success");
             }
         } catch (NullPointerException e) {
@@ -94,7 +95,7 @@ public class GsonSpecialtyRepositoryImpl implements SpecialtyRepository {
                     specialty.setStatus(Status.DELETED);
                 }
             }
-            write(specialties, path);
+            write(specialties, specialtyRepositoryPath);
         } catch (NullPointerException e) {
             e.printStackTrace();
             System.out.println("Хранилище пусто");

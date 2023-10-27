@@ -4,7 +4,6 @@ import com.Maxim.crud_app.controller.DeveloperController;
 import com.Maxim.crud_app.controller.SkillsController;
 import com.Maxim.crud_app.controller.SpecialtyController;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class UserCommandHandler {
@@ -79,8 +78,6 @@ public class UserCommandHandler {
             case "add specialty":
                 specialtyController.addNewSpecialty();
                 break;
-            case "exit":
-                System.out.println("Вы вышли из приложения");
             default:
                 System.out.println("Проверьте правильность введенной команды для выхода введите exit");
         }

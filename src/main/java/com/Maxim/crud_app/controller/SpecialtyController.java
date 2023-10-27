@@ -10,47 +10,72 @@ import java.util.HashMap;
 
 public class SpecialtyController {
     public void getAllSpecialty() {
-        SpecialtyView specialtyView = new SpecialtyView();
-        GsonSpecialtyRepositoryImpl gsonSpecialtyRepository = new GsonSpecialtyRepositoryImpl();
+        try {
+            SpecialtyView specialtyView = new SpecialtyView();
+            GsonSpecialtyRepositoryImpl gsonSpecialtyRepository = new GsonSpecialtyRepositoryImpl();
 
-        specialtyView.outputDataAllSpecialty(gsonSpecialtyRepository.getAll());
+            specialtyView.outputDataAllSpecialty(gsonSpecialtyRepository.getAll());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
+        }
     }
 
     public void getSpecialtyById() {
-        SpecialtyView specialtyView = new SpecialtyView();
-        GsonSpecialtyRepositoryImpl gsonSpecialtyRepository = new GsonSpecialtyRepositoryImpl();
+        try {
+            SpecialtyView specialtyView = new SpecialtyView();
+            GsonSpecialtyRepositoryImpl gsonSpecialtyRepository = new GsonSpecialtyRepositoryImpl();
 
-        Specialty specialtyId = gsonSpecialtyRepository.getById(specialtyView.getIdFromConsole());
-        specialtyView.outputDataAboutSpecialtyById(specialtyId);
+            Specialty specialtyId = gsonSpecialtyRepository.getById(specialtyView.getIdFromConsole());
+            specialtyView.outputDataAboutSpecialtyById(specialtyId);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
+        }
     }
 
     public void deleteSpecialtyById() {
-        SpecialtyView specialtyView = new SpecialtyView();
-        GsonSpecialtyRepositoryImpl gsonSkillRepository = new GsonSpecialtyRepositoryImpl();
+        try {
+            SpecialtyView specialtyView = new SpecialtyView();
+            GsonSpecialtyRepositoryImpl gsonSkillRepository = new GsonSpecialtyRepositoryImpl();
 
-        gsonSkillRepository.deleteById(specialtyView.getIdFromConsole());
+            gsonSkillRepository.deleteById(specialtyView.getIdFromConsole());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
+        }
     }
 
     public void addNewSpecialty() {
-        SpecialtyView specialtyView = new SpecialtyView();
-        GsonSpecialtyRepositoryImpl gsonSpecialtyRepository = new GsonSpecialtyRepositoryImpl();
+        try {
+            SpecialtyView specialtyView = new SpecialtyView();
+            GsonSpecialtyRepositoryImpl gsonSpecialtyRepository = new GsonSpecialtyRepositoryImpl();
 
-        Specialty specialty = new Specialty();
-        specialty.setName(specialtyView.getDataNewSpecialty().get("specialty"));
-        gsonSpecialtyRepository.save(specialty);
+            Specialty specialty = new Specialty();
+            specialty.setName(specialtyView.getDataNewSpecialty().get("specialty"));
+            gsonSpecialtyRepository.save(specialty);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
+        }
     }
 
     public void updateSpecialtyById() {
-        SpecialtyView specialtyView = new SpecialtyView();
-        GsonSpecialtyRepositoryImpl gsonSpecialtyRepository = new GsonSpecialtyRepositoryImpl();
-        HashMap<String, String> dataFromConsole = specialtyView.requestDataForUpdateSpecialty();
-        Integer updateId = Integer.valueOf(dataFromConsole.get("id"));
+        try {
+            SpecialtyView specialtyView = new SpecialtyView();
+            GsonSpecialtyRepositoryImpl gsonSpecialtyRepository = new GsonSpecialtyRepositoryImpl();
+            HashMap<String, String> dataFromConsole = specialtyView.requestDataForUpdateSpecialty();
+            Integer updateId = Integer.valueOf(dataFromConsole.get("id"));
 
-        for (Specialty spec : gsonSpecialtyRepository.getAll()) {
-            if (spec.getId() == updateId) {
-                spec.setName(dataFromConsole.get("newValueSpecialty"));
-                gsonSpecialtyRepository.update(spec);
+            for (Specialty spec : gsonSpecialtyRepository.getAll()) {
+                if (spec.getId() == updateId) {
+                    spec.setName(dataFromConsole.get("newValueSpecialty"));
+                    gsonSpecialtyRepository.update(spec);
+                }
             }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
         }
     }
 }

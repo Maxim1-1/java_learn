@@ -17,25 +17,40 @@ public class SkillsView implements BaseView {
     }
 
     public void outputSkillById(Skill skill) {
-        System.out.println("id: " + skill.getId() + ", Skills: " + skill.getSkill()+", Status: "+skill.getStatus());
+        try {
+            System.out.println("id: " + skill.getId() + ", Skills: " + skill.getSkill()+", Status: "+skill.getStatus());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
+        }
     }
 
     public HashMap<String,String> getDataNewSkill() {
-        Scanner scanner = new Scanner(System.in);
+        try {
+            Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Введите skills через запятую");
-        outputSkillData.put("skills",scanner.nextLine());
-        return outputSkillData;
+            System.out.println("Введите skills через запятую");
+            outputSkillData.put("skills",scanner.nextLine());
+            return outputSkillData;
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
+        }
+        return null;
     }
 
     public HashMap<String, String> requestDataForUpdateSkill() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Укажите id записи");
-        outputSkillData.put("id", scanner.nextLine());
-        System.out.println("Укажите новое значение скила");
-        outputSkillData.put("newValueSkill", scanner.nextLine());
-        return outputSkillData;
+        try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Укажите id записи");
+            outputSkillData.put("id", scanner.nextLine());
+            System.out.println("Укажите новое значение скила");
+            outputSkillData.put("newValueSkill", scanner.nextLine());
+            return outputSkillData;
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
+        }
+        return null;
     }
-
-
 }

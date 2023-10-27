@@ -6,14 +6,14 @@ import com.Maxim.crud_app.repository.SkillRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class GsonSkillRepositoryImpl implements SkillRepository {
-
-    String path = "src/main/java/com/Maxim/crud_app/data/skills.json";
+    String skillRepositoryPath = "src/main/java/com/Maxim/crud_app/data" + File.separator + "skill.json";
 
     @Override
     public Skill getById(Integer skillId) {
@@ -33,7 +33,7 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
     public List<Skill> getAll() {
         try {
             Gson gson = new Gson();
-            String jsonString = read(path);
+            String jsonString = read(skillRepositoryPath);
             Type type = new TypeToken<List<Skill>>() {
             }.getType();
             List<Skill> skills = gson.fromJson(jsonString, type);
@@ -55,7 +55,7 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
             }
             skills.add(skill);
 
-            write(skills, path);
+            write(skills, skillRepositoryPath);
             System.out.println("Skill successfully added");
         } catch (NullPointerException e) {
             e.printStackTrace();
@@ -74,7 +74,7 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
                         allSkills.set(skill, updateSkill);
                     }
                 }
-                write(allSkills, path);
+                write(allSkills, skillRepositoryPath);
                 System.out.println("Update success");
             }
         } catch (NullPointerException e) {
@@ -92,7 +92,7 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
                     skill.setStatus(Status.DELETED);
                 }
             }
-            write(skills, path);
+            write(skills, skillRepositoryPath);
         } catch (NullPointerException e) {
             e.printStackTrace();
             System.out.println("Хранилище пусто");

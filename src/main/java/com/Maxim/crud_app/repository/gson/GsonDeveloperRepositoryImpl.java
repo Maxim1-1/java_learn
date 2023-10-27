@@ -2,18 +2,17 @@ package com.Maxim.crud_app.repository.gson;
 
 import com.Maxim.crud_app.base.Status;
 import com.Maxim.crud_app.model.Developer;
-import com.Maxim.crud_app.model.Skill;
-import com.Maxim.crud_app.model.Specialty;
 import com.Maxim.crud_app.repository.DeveloperRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
-    String path = "src/main/java/com/Maxim/crud_app/data/developer.json";
+    String developerRepositoryPath = "src/main/java/com/Maxim/crud_app/data" + File.separator + "developer.json";
 
 
     @Override
@@ -36,7 +35,7 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
     public List<Developer> getAll() {
         try {
             Gson gson = new Gson();
-            String jsonString = read(path);
+            String jsonString = read(developerRepositoryPath);
             Type type = new TypeToken<List<Developer>>() {
             }.getType();
 
@@ -60,7 +59,7 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
             }
             developers.add(developer);
 
-            write(developers, path);
+            write(developers, developerRepositoryPath);
             System.out.println("Developer successfully added");
         } catch (NullPointerException e) {
             e.printStackTrace();
@@ -79,7 +78,7 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
                         developers.set(dev, developer);
                     }
                 }
-                write(developers, path);
+                write(developers, developerRepositoryPath);
                 System.out.println("Update success");
             }
         } catch (NullPointerException e) {
@@ -96,10 +95,9 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
             for (Developer developer : developers) {
                 if (developer.getId() == deleteId) {
                     developer.setStatus(Status.DELETED);
-
                 }
             }
-            write(developers, path);
+            write(developers, developerRepositoryPath);
         } catch (NullPointerException e) {
             e.printStackTrace();
             System.out.println("Хранилище пусто");
