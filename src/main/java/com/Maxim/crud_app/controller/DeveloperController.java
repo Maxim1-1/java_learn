@@ -126,7 +126,6 @@ public class DeveloperController {
         developer.setSpecialty(specialty);
         developer.setSkills(skills);
 
-        gsonDeveloperRepository.updateSkillAndSpecialty(specialty, skills);
         gsonDeveloperRepository.save(developer);
     }
 }

@@ -9,9 +9,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicLong;
+
 
 public class GsonSkillRepositoryImpl implements SkillRepository {
 
@@ -19,72 +17,85 @@ public class GsonSkillRepositoryImpl implements SkillRepository {
 
     @Override
     public Skill getById(Integer skillId) {
-        return getAll().stream()
-                .filter(skill -> skill.getId() == skillId)
-                .findFirst()
-                .orElse(null);
+        try {
+            return getAll().stream()
+                    .filter(skill -> skill.getId() == skillId)
+                    .findFirst()
+                    .orElse(null);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
+        }
+        return null;
     }
 
     @Override
     public List<Skill> getAll() {
-        Gson gson = new Gson();
-        String jsonString = read(path);
-        Type type = new TypeToken<List<Skill>>() {
-        }.getType();
-        List<Skill> skills = gson.fromJson(jsonString, type);
-
-        return skills;
+        try {
+            Gson gson = new Gson();
+            String jsonString = read(path);
+            Type type = new TypeToken<List<Skill>>() {
+            }.getType();
+            List<Skill> skills = gson.fromJson(jsonString, type);
+            return skills;
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
+        }
+        return null;
     }
 
     @Override
     public void save(Skill skill) {
-        List<Skill> skills;
-        skills = getAll();
-        if (skills == null) {
-            skills = new ArrayList<>();
+        try {
+            List<Skill> skills;
+            skills = getAll();
+            if (skills == null) {
+                skills = new ArrayList<>();
+            }
+            skills.add(skill);
+
+            write(skills, path);
+            System.out.println("Skill successfully added");
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
         }
-        skills.add(skill);
-
-        write(skills, path);
-        System.out.println("Skill successfully added");
-
-
     }
 
     @Override
     public void update(Skill updateSkill) {
-        List<Skill> allSkills;
-        allSkills = getAll();
-
-        for (int skill = 0; skill < allSkills.size(); skill++) {
-            {
-                if (allSkills.get(skill).getId() == updateSkill.getId()) {
-                    allSkills.set(skill, updateSkill);
+        try {
+            List<Skill> allSkills;
+            allSkills = getAll();
+            for (int skill = 0; skill < allSkills.size(); skill++) {
+                {
+                    if (allSkills.get(skill).getId() == updateSkill.getId()) {
+                        allSkills.set(skill, updateSkill);
+                    }
                 }
+                write(allSkills, path);
+                System.out.println("Update success");
             }
-            write(allSkills, path);
-            System.out.println("Update success");
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
         }
-
-
     }
 
     @Override
     public void deleteById(Integer deleteId) {
-        List<Skill> skills = getAll();
-        for (Skill skill : skills) {
-            if (skill.getId() == deleteId) {
-                skill.setStatus(Status.DELETED);
+        try {
+            List<Skill> skills = getAll();
+            for (Skill skill : skills) {
+                if (skill.getId() == deleteId) {
+                    skill.setStatus(Status.DELETED);
+                }
             }
+            write(skills, path);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
         }
-        write(skills, path);
-
-
     }
-
-    public boolean isCheckTheValueInRepository(Skill expectedSkill) {
-        return getAll().stream()
-                .anyMatch(skill -> skill.getSkill().equalsIgnoreCase(expectedSkill.getSkill()));
-    }
-
 }

@@ -3,8 +3,6 @@ package com.Maxim.crud_app.repository;
 import com.google.gson.Gson;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.List;
 
 public interface GenericRepository<T, ID> {

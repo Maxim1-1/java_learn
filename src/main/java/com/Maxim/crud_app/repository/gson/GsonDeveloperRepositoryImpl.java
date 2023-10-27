@@ -18,79 +18,93 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
 
     @Override
     public Developer getById(Integer id) {
-        return getAll().stream()
-                .filter(developer -> developer.getId() == id)
-                .findFirst()
-                .orElse(null);
+
+        try {
+            return getAll().stream()
+                    .filter(developer -> developer.getId() == id)
+                    .findFirst()
+                    .orElse(null);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
+        }
+
+        return null;
     }
 
     @Override
     public List<Developer> getAll() {
-        Gson gson = new Gson();
-        String jsonString = read(path);
-        Type type = new TypeToken<List<Developer>>() {
-        }.getType();
+        try {
+            Gson gson = new Gson();
+            String jsonString = read(path);
+            Type type = new TypeToken<List<Developer>>() {
+            }.getType();
 
-        List<Developer> developers = gson.fromJson(jsonString, type);
+            List<Developer> developers = gson.fromJson(jsonString, type);
 
-        return developers;
+            return developers;
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
+        }
+        return null;
     }
 
     @Override
     public void save(Developer developer) {
-        List<Developer> developers;
-        developers = getAll();
-        if (developers == null) {
-            developers = new ArrayList<>();
-        }
-        developers.add(developer);
+        try {
+            List<Developer> developers;
+            developers = getAll();
+            if (developers == null) {
+                developers = new ArrayList<>();
+            }
+            developers.add(developer);
 
-        write(developers, path);
-        System.out.println("Developer successfully added");
+            write(developers, path);
+            System.out.println("Developer successfully added");
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
+        }
     }
 
     @Override
     public void update(Developer developer) {
-        List<Developer> developers;
-        developers = getAll();
-
-        for (int dev = 0; dev < developers.size(); dev++) {
-            {
-                if (developers.get(dev).getId() == developer.getId()) {
-                    developers.set(dev, developer);
+        try {
+            List<Developer> developers;
+            developers = getAll();
+            for (int dev = 0; dev < developers.size(); dev++) {
+                {
+                    if (developers.get(dev).getId() == developer.getId()) {
+                        developers.set(dev, developer);
+                    }
                 }
+                write(developers, path);
+                System.out.println("Update success");
             }
-            write(developers, path);
-            System.out.println("Update success");
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
         }
     }
 
     @Override
     public void deleteById(Integer deleteId) {
-        List<Developer> developers = getAll();
+        try {
+            List<Developer> developers = getAll();
 
-        for (Developer developer : developers) {
-            if (developer.getId() == deleteId) {
-                developer.setStatus(Status.DELETED);
+            for (Developer developer : developers) {
+                if (developer.getId() == deleteId) {
+                    developer.setStatus(Status.DELETED);
 
+                }
             }
+            write(developers, path);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("Хранилище пусто");
         }
-        write(developers, path);
     }
 
-
-    public void updateSkillAndSpecialty(Specialty specialty, List<Skill> skills) {
-        GsonSkillRepositoryImpl gsonSkillRepository = new GsonSkillRepositoryImpl();
-        GsonSpecialtyRepositoryImpl gsonSpecialtyRepository = new GsonSpecialtyRepositoryImpl();
-
-        if (!gsonSpecialtyRepository.isCheckTheValueInRepository(specialty)) {
-            gsonSpecialtyRepository.save(specialty);
-        }
-        for (Skill skill : skills) {
-            if (!gsonSkillRepository.isCheckTheValueInRepository(skill)) {
-                gsonSkillRepository.save(skill);
-            }
-        }
-    }
 }
 
