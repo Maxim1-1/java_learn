@@ -6,15 +6,9 @@ import com.Maxim.crud_app.model.Skill;
 import com.Maxim.crud_app.model.Specialty;
 import com.Maxim.crud_app.model.UpdateParamsDeveloper;
 import com.Maxim.crud_app.repository.gson.GsonDeveloperRepositoryImpl;
-import com.Maxim.crud_app.repository.gson.GsonSkillRepositoryImpl;
-import com.Maxim.crud_app.repository.gson.GsonSpecialtyRepositoryImpl;
 import com.Maxim.crud_app.view.DeveloperView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class DeveloperController {
@@ -52,55 +46,59 @@ public class DeveloperController {
         DeveloperView developerView = new DeveloperView();
         GsonDeveloperRepositoryImpl gsonDeveloperRepository = new GsonDeveloperRepositoryImpl();
         UpdateParamsDeveloper updateParamsDeveloper = new UpdateParamsDeveloper();
-
         HashMap<String, String> dataFromConsole = developerView.requestDataForUpdateDeveloper();
         Integer updateId = Integer.valueOf(dataFromConsole.get("id"));
 
-        switch (dataFromConsole.get("params")) {
-            case "firstName":
+        for (Map.Entry<String, String> param : dataFromConsole.entrySet()) {
 
-                Developer updateDeveloperFirstName = updateParamsDeveloper.performOperationOnDeveloper(updateId, developer -> developer.setFirstName(dataFromConsole.get("newValue")));
-                gsonDeveloperRepository.update(updateDeveloperFirstName);
-                break;
-            case "lastName":
-
-                Developer updateDeveloperLastName = updateParamsDeveloper.performOperationOnDeveloper(updateId, developer -> developer.setLastName(dataFromConsole.get("newValue")));
-                gsonDeveloperRepository.update(updateDeveloperLastName);
-                break;
-            case "specialty":
-                Developer updateDeveloperSpecialty = null;
-                Specialty specialty = new Specialty();
-                specialty.setName(dataFromConsole.get("newValue"));
-
-                for (Developer developer : gsonDeveloperRepository.getAll()) {
-                    if (developer.getId() == updateId) {
-                        developer.setSpecialty(specialty);
-                        updateDeveloperSpecialty = developer;
+            switch (param.getKey()) {
+                case "firstName":
+                    Developer updateDeveloperFirstName = updateParamsDeveloper.performOperationOnDeveloper(updateId, developer -> developer.setFirstName(dataFromConsole.get("firstName")));
+                    gsonDeveloperRepository.update(updateDeveloperFirstName);
+                    break;
+                case "lastName":
+                    Developer updateDeveloperLastName = updateParamsDeveloper.performOperationOnDeveloper(updateId, developer -> developer.setLastName(dataFromConsole.get("lastName")));
+                    gsonDeveloperRepository.update(updateDeveloperLastName);
+                    break;
+                case "specialty":
+                    Specialty specialty = new Specialty();
+                    specialty.setName(dataFromConsole.get("specialty"));
+                    Developer updateDeveloperSpecialty = updateParamsDeveloper.performOperationOnDeveloper(updateId, developer -> developer.setSpecialty(specialty));
+                    gsonDeveloperRepository.update(updateDeveloperSpecialty);
+                    break;
+                case "replace skills":
+                    String[] skills = dataFromConsole.get("replace skills").split(",");
+                    List<Skill> skillList = new ArrayList<>();
+                    for (String skill : skills) {
+                        Skill newSkill = new Skill();
+                        newSkill.setSkill(skill);
+                        skillList.add(newSkill);
                     }
-                }
-                gsonDeveloperRepository.update(updateDeveloperSpecialty);
-                break;
-            case "skills":
-                Developer updateDeveloperSkills = null;
-                String[] skills = dataFromConsole.get("newValue").split(",");
-                List<Skill> skillList = new ArrayList<>();
+                    Developer updateDeveloperSkills = updateParamsDeveloper.performOperationOnDeveloper(updateId, developer -> developer.setSkills(skillList));
+                    gsonDeveloperRepository.update(updateDeveloperSkills);
+                    break;
+                case "add new skills":
 
-                for (String skill : skills) {
-                    Skill newSkill = new Skill();
-                    newSkill.setSkill(skill);
-                    skillList.add(newSkill);
-                }
-
-
-                for (Developer developer : gsonDeveloperRepository.getAll()) {
-                    if (developer.getId() == updateId) {
-                        developer.setSkills(skillList);
-                        updateDeveloperSkills = developer;
+                    String[] newSkills = dataFromConsole.get("add new skills").split(",");
+                    List<Skill> oldSkillsDeveloper = gsonDeveloperRepository.getById(updateId).getSkills();
+                    List<Skill> newSkillList = new ArrayList<>();
+                    for (String skill : newSkills) {
+                        Skill newSkill = new Skill();
+                        newSkill.setSkill(skill);
+                        newSkillList.add(newSkill);
                     }
-                }
-                gsonDeveloperRepository.update(updateDeveloperSkills);
-                break;
+                    newSkillList.addAll(oldSkillsDeveloper);
+                    Developer updateDeveloperNewSkills = updateParamsDeveloper.performOperationOnDeveloper(updateId, developer -> developer.setSkills(newSkillList));
+                    gsonDeveloperRepository.update(updateDeveloperNewSkills);
+                    break;
+                case "id":
+                    break;
+                default:
+                    System.out.println("Вы ввели неверное значение");
+            }
+
         }
+
     }
 
 

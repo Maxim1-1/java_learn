@@ -46,26 +46,27 @@ public class DeveloperView implements BaseView {
         System.out.println(String.format("Укажите id записи"));
         outputUserData.put("id", scanner.nextLine());
 
-        System.out.println(String.format("Выберите из списка один параметр для изменения: firstName, lastName, specialty, skills"));
-        outputUserData.put("params", scanner.nextLine());
-
-        System.out.println(String.format("Новое значение"));
-        outputUserData.put("newValue", scanner.nextLine());
+        System.out.println(String.format("Выберите из списка один или несколько параметров(через запятую) для изменения: firstName, lastName, specialty, replace skills, add new skills"));
+        String[] params = scanner.nextLine().split(",");
+        for (String param : params) {
+            System.out.printf("Новое значение для %s%n", param);
+            outputUserData.put(param, scanner.nextLine());
+        }
         return outputUserData;
 
     }
 
-    public HashMap<String,String> getDataNewDeveloper() {
+    public HashMap<String, String> getDataNewDeveloper() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(String.format("Введите first Name"));
-        outputUserData.put("firstName",scanner.nextLine());
+        outputUserData.put("firstName", scanner.nextLine());
         System.out.println(String.format("Введите last Name"));
-        outputUserData.put("lastName",scanner.nextLine());
+        outputUserData.put("lastName", scanner.nextLine());
         System.out.println(String.format("Введите specialty"));// вызвать вьюху из special
-        outputUserData.put("specialty",scanner.nextLine());
+        outputUserData.put("specialty", scanner.nextLine());
         System.out.println(String.format("Введите skills через запятую"));// вызвать вьюху из skill
-        outputUserData.put("skills",scanner.nextLine());
+        outputUserData.put("skills", scanner.nextLine());
         return outputUserData;
     }
 

@@ -77,7 +77,6 @@ public class UserCommandHandler {
                 break;
             case "exit":
                 System.out.println("Вы вышли из приложения");
-
             default:
                 System.out.println("Проверьте правильность введенной команды для выхода введите exit");
         }

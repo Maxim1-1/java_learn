@@ -83,22 +83,21 @@ public class GsonDeveloperRepositoryImpl implements DeveloperRepository {
 
     public Integer getIdForNewDeveloper() {
         Integer maxId = getMaxIdFromRepository("C:\\Users\\maksgodofwar\\IdeaProjects\\java_learn\\src\\main\\java\\com\\Maxim\\crud_app\\data\\js.json");
-        if ( maxId!= 1) {
-            return maxId+ 1;
+        if (maxId != 1) {
+            return maxId + 1;
         } else {
             return 1;
         }
     }
 
-    public void updateSkillAndSpecialty (Specialty specialty, List<Skill> skills)
-    {
+    public void updateSkillAndSpecialty(Specialty specialty, List<Skill> skills) {
         GsonSkillRepositoryImpl gsonSkillRepository = new GsonSkillRepositoryImpl();
         GsonSpecialtyRepositoryImpl gsonSpecialtyRepository = new GsonSpecialtyRepositoryImpl();
 
         if (!gsonSpecialtyRepository.isCheckTheValueInRepository(specialty)) {
             gsonSpecialtyRepository.save(specialty);
         }
-        for (Skill skill:skills) {
+        for (Skill skill : skills) {
             if (!gsonSkillRepository.isCheckTheValueInRepository(skill)) {
                 gsonSkillRepository.save(skill);
             }
