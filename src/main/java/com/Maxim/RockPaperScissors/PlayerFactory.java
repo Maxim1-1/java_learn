@@ -1,4 +1,4 @@
-package app_1_1;
+package com.Maxim.RockPaperScissors;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package task_1_2;
+package com.Maxim.AlgorithmicTasks;
 
 import java.util.*;
 

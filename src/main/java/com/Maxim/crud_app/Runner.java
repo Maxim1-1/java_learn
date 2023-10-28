@@ -3,7 +3,7 @@ package com.Maxim.crud_app;
 import java.util.Scanner;
 
 public class Runner {
-    public static void main(String[] args) {
+    public static void run() {
         UserCommandHandler userController = new UserCommandHandler();
         Scanner scanner = new Scanner(System.in);
 

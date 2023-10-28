@@ -1,7 +1,7 @@
-package app_1_1;
+package com.Maxim.RockPaperScissors;
 
-import app_1_1.console_utils.Reader;
-import app_1_1.console_utils.Writer;
+import com.Maxim.RockPaperScissors.console_utils.Reader;
+import com.Maxim.RockPaperScissors.console_utils.Writer;
 
 import java.util.*;
 

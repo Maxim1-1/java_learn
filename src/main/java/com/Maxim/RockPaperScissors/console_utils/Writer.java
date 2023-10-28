@@ -1,4 +1,4 @@
-package app_1_1.console_utils;
+package com.Maxim.RockPaperScissors.console_utils;
 
 public class Writer {
     public void outputValueConsole (String value) {
